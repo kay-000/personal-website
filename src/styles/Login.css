@@ -1,0 +1,60 @@
+.login-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .window-container{
+    height: 40vh; 
+    width: 40vw;
+  }
+  
+  .content {
+    padding: 5%;
+  }
+  
+  .content p {
+    margin-bottom: 5%;
+  }
+
+  .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3%;
+  }
+  
+  .form-group label {
+    width: 30%;
+    text-align: right;
+    margin-right: 3%;
+  }
+  
+  .form-group input {
+    flex-grow: 1;
+    padding: 2%;
+    border: 2px inset #fff;
+    background-color: white; 
+    font-family: "VT323", sans-serif;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5%;
+  }
+  
+  .button-group button {
+    margin-left: 3%;
+    padding: 2% 5%;
+    background-color: #F2BED1;
+    border: 1px solid #000000;
+    cursor: pointer;
+    font-family: "VT323", sans-serif;
+    box-shadow: 1px 1px 0px #000;
+  }
+
+  .button-group button:active {
+    border-style: inset;
+    box-shadow: none;
+  }

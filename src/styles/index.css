@@ -1,0 +1,9 @@
+
+body {
+  font-family: "VT323", sans-serif;
+  background-color:#F9F5F6;
+  margin:0;
+  padding:0;
+  height: 100%;
+  overflow: hidden;
+}

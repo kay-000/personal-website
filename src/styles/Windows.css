@@ -1,0 +1,44 @@
+.window-container {
+  background-color: #F8E8EE;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 50vw;
+  height: 50vh; 
+  padding-top: 0.01%;
+}
+
+.banner {
+  background-color: #F2BED1; 
+  height: 10%; 
+  display: flex;
+  align-items: center;
+  padding: 0% 2%; 
+  margin: 1%;
+  box-sizing: border-box;
+}
+
+.title {
+  flex-grow: 1; 
+}
+
+.banner button {
+  font-family: 'VT323', 'monospace';
+  margin-left: 10px; 
+}
+
+.window-controls button{
+  background-color:#F8E8EE; 
+  border: 1px solid #000000;
+  box-shadow: 1px 1px 0px #000;
+}
+.window-controls button:active {
+  border-style: inset;
+  box-shadow: none;
+}
+
+.banner > :nth-child(2) {
+  margin-left: auto; /* Pushes the buttons to the right */
+}
+
+.content {
+  padding: 0% 2%; 
+}

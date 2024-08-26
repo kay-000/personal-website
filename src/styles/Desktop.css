@@ -1,0 +1,29 @@
+
+.desktop-screen {
+  width: 100%;
+  height: 93.5vh;
+  background-color: #FDCEDF;
+}
+
+.desktop-bar {
+  width: 100%;
+  height: 5vh;
+}
+
+.desktop-bar div {
+  display: inline-block;
+  background-color: #F8E8EE;
+  margin: 0.5%;
+  padding: 0.5%; 
+  border: 2px #F2BED1 solid; 
+}
+
+.desktop-bar .time-block{
+  float:right;
+  border:none; 
+  background-color:#F2BED1; 
+}
+
+button{
+  font-family: "VT323", sans-serif;
+}
