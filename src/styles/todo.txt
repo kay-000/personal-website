@@ -1,0 +1,53 @@
+PERSONAL WEBSITE TODO LIST
+==========================
+
+EASY TASKS
+----------
+1. ✓ Update time to be real-time - Make the clock in the bar actually tick
+2. Fill in LinkedInProfile placeholders - Replace "Your Name", "Your Professional Title", etc. with your real info
+3. Fill in Kayla_info.txt content - Replace "Blah" with actual bio text
+4. Fill in Projects window content - Add your actual project descriptions
+5. ✓ Add icon images - Replace /path/to/... with actual icon file paths or URLs
+
+MEDIUM TASKS
+------------
+6. ✓ Style the contact form - Add CSS to make it look prettier and match your theme
+7. ✓ Add form success/error messages - Show feedback after contact form submission
+8. ✓ Add window cascading - Make new windows open with slight offset so they don't stack perfectly on top of each other
+9. Add window focus/z-index management - Bring clicked window to front
+10. Add desktop background - Add a background image or pattern to the desktop
+
+MEDIUM-HARD TASKS
+-----------------
+11. ✓  Hook up contact form to actually send emails - Integrate EmailJS or create a backend endpoint
+12. ✓  Add form validation styling - Visual feedback for invalid inputs
+13. Add keyboard shortcuts - Like Esc to close active window
+14. Add window open/close animations - Smooth transitions for better UX
+
+HARD TASKS
+----------
+15. Make site responsive/mobile-friendly - Handle draggable windows on touch devices, adjust layout for small screens
+16. Decide on and implement LinkedIn approach - Either remove external link and use LinkedInProfile component in a window, or remove the component
+17. Add projects with images/screenshots - Create a nice gallery or card layout for projects with visuals
+
+CONTENT TO FILL IN
+------------------
+- Kayla_info.txt window: Add your actual bio/about me content (background, interests, current role/studies, what you're passionate about)
+- Projects window: Add your actual projects with descriptions (project name, tech stack, brief description, links to GitHub/live demos, maybe screenshots)
+- LinkedInProfile component: Fill in your actual name, title, about section, work experience, education details, and skills
+- Contact form: Hook it up to actually send emails, add form validation styling, show success/error messages
+- Icon images: Add actual icon images for each desktop icon (could use custom images or icons from a library)
+
+NICE-TO-HAVE FEATURES
+---------------------
+- Window behavior: Multiple windows stack on top of each other - maybe add slight offsets so they cascade? Bring window to front when clicked (z-index management)
+- Desktop personalization: Add a background image or pattern to the desktop
+- Navigation: The LinkedIn icon opens the external site but you have a LinkedInProfile component - decide which approach you prefer
+- Accessibility & Polish: Add keyboard shortcuts (like Esc to close windows), add transitions/animations for window open/close, make sure everything works on mobile
+
+COMPLETED
+---------
+✓ Fix window centering - Windows now appear centered instead of in upper left corner
+✓ Fix window control button sizes - All buttons (minimize, maximize, close) are now the same size
+✓ Fix maximize functionality - Windows properly maximize to desktop area without covering taskbar
+✓ Add real-time clock - Time in taskbar now updates every second

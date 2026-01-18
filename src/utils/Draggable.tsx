@@ -1,16 +1,21 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 type DraggableProps = {
   children: React.ReactNode;
   dragHandleRef: React.RefObject<HTMLDivElement>;
+  disableDragging?: boolean;
+  initialPosition?: { x: number; y: number };
+  zIndex?: number;
+  onClick?: () => void;
 };
 
-function Draggable({ children, dragHandleRef }: DraggableProps) {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+function Draggable({ children, dragHandleRef, disableDragging = false, initialPosition = { x: 0, y: 0 }, zIndex = 0, onClick }: DraggableProps) {
+  const [position, setPosition] = useState(initialPosition);
   const [isDragging, setIsDragging] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
 
   const handleMouseDown = (e: React.MouseEvent) => {
+    if (disableDragging) return;
     if (dragHandleRef.current && dragHandleRef.current.contains(e.target as Node)) {
       setIsDragging(true);
       setOffset({
@@ -20,8 +25,8 @@ function Draggable({ children, dragHandleRef }: DraggableProps) {
     }
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
+  const handleMouseMove = (e: MouseEvent) => {
+    if (!isDragging || disableDragging) return;
     setPosition({
       x: e.clientX - offset.x,
       y: e.clientY - offset.y,
@@ -32,15 +37,25 @@ function Draggable({ children, dragHandleRef }: DraggableProps) {
     setIsDragging(false);
   };
 
+  useEffect(() => {
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isDragging, offset, disableDragging]);
+
   return (
     <div
       onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
+      onClick={onClick}
       style={{
         position: 'absolute',
         left: `${position.x}px`,
         top: `${position.y}px`,
+        cursor: isDragging && !disableDragging ? 'grabbing' : 'auto',
+        zIndex,
       }}
     >
       {children}

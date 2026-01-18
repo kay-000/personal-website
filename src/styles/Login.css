@@ -1,13 +1,17 @@
+
 .login-container {
     height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    background-color: #fcdee9; 
+
   }
-  
+
   .window-container{
     height: 40vh; 
     width: 40vw;
+    /* background-color: orange;  */
   }
   
   .content {
@@ -32,10 +36,17 @@
   
   .form-group input {
     flex-grow: 1;
-    padding: 2%;
-    border: 2px inset #fff;
-    background-color: white; 
+    padding: 4px;
+    background-color: white;
     font-family: "VT323", sans-serif;
+    /* Windows 95 inset input field */
+    border-top: 2px solid #8b8b8b;
+    border-left: 2px solid #8b8b8b;
+    border-bottom: 2px solid #ffffff;
+    border-right: 2px solid #ffffff;
+    box-shadow:
+      inset 1px 1px 0 0 #666666,
+      inset -1px -1px 0 0 #fef7fb;
   }
   
   .button-group {
@@ -46,15 +57,28 @@
   
   .button-group button {
     margin-left: 3%;
-    padding: 2% 5%;
-    background-color: #F2BED1;
-    border: 1px solid #000000;
+    padding: 4px 12px;
+    background-color: #F8E8EE;
     cursor: pointer;
     font-family: "VT323", sans-serif;
-    box-shadow: 1px 1px 0px #000;
+    /* Classic Windows 95 raised button */
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-bottom: 2px solid #666666;
+    border-right: 2px solid #666666;
+    box-shadow:
+      inset 1px 1px 0 0 #fef7fb,
+      inset -1px -1px 0 0 #8b8b8b;
   }
 
   .button-group button:active {
-    border-style: inset;
-    box-shadow: none;
+    /* Inset look when pressed */
+    border-top: 2px solid #666666;
+    border-left: 2px solid #666666;
+    border-bottom: 2px solid #ffffff;
+    border-right: 2px solid #ffffff;
+    box-shadow:
+      inset 1px 1px 0 0 #8b8b8b,
+      inset -1px -1px 0 0 #fef7fb;
+    padding: 5px 11px 3px 13px;
   }

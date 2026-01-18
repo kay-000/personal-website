@@ -1,19 +1,32 @@
 .window-container {
   background-color: #F8E8EE;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 50vw;
-  height: 50vh; 
-  padding-top: 0.01%;
+  height: 50vh;
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+  /* Classic Windows 95 3D border effect */
+  border-top: 3px solid #ffffff;
+  border-left: 3px solid #ffffff;
+  border-bottom: 3px solid #8b8b8b;
+  border-right: 3px solid #8b8b8b;
+  box-shadow:
+    inset 1px 1px 0 0 #fef7fb,
+    inset -1px -1px 0 0 #666666,
+    2px 2px 0 0 #000000;
 }
 
 .banner {
-  background-color: #F2BED1; 
-  height: 10%; 
+  background-color: #F2BED1;
+  flex-shrink: 0;
+  height: 40px;
   display: flex;
   align-items: center;
-  padding: 0% 2%; 
-  margin: 1%;
+  padding: 3px 6px;
+  margin-bottom: 3px;
   box-sizing: border-box;
+  /* Subtle raised effect for title bar */
+  border-bottom: 2px solid #d9a4bc;
 }
 
 .title {
@@ -26,13 +39,29 @@
 }
 
 .window-controls button{
-  background-color:#F8E8EE; 
-  border: 1px solid #000000;
-  box-shadow: 1px 1px 0px #000;
+  background-color:#F8E8EE;
+  min-width: 24px;
+  height: 24px;
+  padding: 2px 8px;
+  /* Classic Windows 95 raised button */
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-bottom: 2px solid #666666;
+  border-right: 2px solid #666666;
+  box-shadow:
+    inset 1px 1px 0 0 #fef7fb,
+    inset -1px -1px 0 0 #8b8b8b;
 }
 .window-controls button:active {
-  border-style: inset;
-  box-shadow: none;
+  /* Inset look when pressed */
+  border-top: 2px solid #666666;
+  border-left: 2px solid #666666;
+  border-bottom: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+  box-shadow:
+    inset 1px 1px 0 0 #8b8b8b,
+    inset -1px -1px 0 0 #fef7fb;
+  padding: 3px 7px 1px 9px;
 }
 
 .banner > :nth-child(2) {
@@ -40,5 +69,22 @@
 }
 
 .content {
-  padding: 0% 2%; 
+  padding: 8px;
+  flex: 1;
+  overflow: auto;
+  background-color: #F8E8EE;
+  /* Inset border for content area */
+  border-top: 2px solid #8b8b8b;
+  border-left: 2px solid #8b8b8b;
+  border-bottom: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+  box-shadow:
+    inset 1px 1px 0 0 #666666,
+    inset -1px -1px 0 0 #fef7fb;
+}
+
+.window-container.maximized {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
 }

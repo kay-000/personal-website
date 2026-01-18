@@ -1,0 +1,33 @@
+.linkedin-profile {
+font-family: Arial, sans-serif;
+padding: 20px;
+background-color: #f3f2ef;
+}
+
+.profile-header {
+text-align: center;
+margin-bottom: 20px;
+}
+
+.profile-picture {
+width: 150px;
+height: 150px;
+border-radius: 50%;
+object-fit: cover;
+}
+
+.profile-summary, .profile-experience, .profile-education, .profile-skills {
+margin-bottom: 20px;
+}
+
+.linkedin-link {
+display: block;
+text-align: center;
+color: #0a66c2;
+text-decoration: none;
+font-weight: bold;
+}
+
+.linkedin-link:hover {
+text-decoration: underline;
+}
