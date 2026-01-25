@@ -12,6 +12,19 @@
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    padding: 6px;
+    border: 2px solid transparent;
+    transition: background-color 0.1s;
+  }
+
+  .desktop-icon:hover {
+    background-color: rgba(242, 190, 209, 0.5);
+    border: 2px dotted #F2BED1;
+  }
+
+  .desktop-icon:active {
+    background-color: rgba(242, 190, 209, 0.8);
+    border: 2px solid #F2BED1;
   }
   
   .icon-image {
