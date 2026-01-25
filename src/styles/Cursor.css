@@ -1,8 +1,26 @@
-body {
-  /* 
-    Specify the image URL first. 
-    The optional coordinates (e.g., 12 12) define the "hotspot" (the clickable point) of the cursor.
-    'auto' provides a generic fallback if the image fails to load.
-  */
-  cursor: url('/icons/cursor.png') 12 12, auto;
+/* Default cursor */
+* {
+  cursor: url('/icons/cursor.png') 0 0, auto;
+}
+
+/* Pointer cursor for clickable elements */
+a,
+button,
+input[type="submit"],
+input[type="button"],
+.desktop-icon,
+.window-title,
+.title-bar-controls button,
+[role="button"],
+[onclick],
+.clickable {
+  cursor: url('/icons/hand_cursor.png') 6 0, pointer !important;
+}
+
+/* Text cursor for inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  cursor: text;
 }

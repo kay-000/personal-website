@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <!-- Monitor -->
+  <rect x="6" y="4" width="36" height="28" fill="#F2BED1" stroke="#000" stroke-width="2"/>
+  <!-- Screen -->
+  <rect x="10" y="8" width="28" height="20" fill="#fcdee9" stroke="#000" stroke-width="1"/>
+  <!-- Screen shine -->
+  <rect x="12" y="10" width="8" height="4" fill="#fff" opacity="0.5"/>
+  <!-- Monitor stand -->
+  <rect x="18" y="32" width="12" height="4" fill="#F2BED1" stroke="#000" stroke-width="1"/>
+  <!-- Monitor base -->
+  <rect x="12" y="36" width="24" height="4" fill="#F2BED1" stroke="#000" stroke-width="2"/>
+  <!-- Power light -->
+  <circle cx="40" cy="30" r="2" fill="#00ff00"/>
+</svg>

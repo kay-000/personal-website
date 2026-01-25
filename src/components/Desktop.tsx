@@ -5,7 +5,10 @@ import ContactForm from './ContactForm.tsx';
 import LinkedInProfile from './LinkedInProfile.tsx';
 import Projects from './Projects.tsx';
 import PDFViewer from './PDFViewer';
-import MyInfo from './MyInfo'
+import MyInfo from './MyInfo';
+import SystemProperties from './SystemProperties';
+import Screensaver from './Screensaver';
+import { playStartup, playWindowOpen, playWindowClose, playMinimize, playClick, resumeAudio } from '../utils/sounds';
 
 import '../styles/Desktop.css';
 import '../styles/Icon.css';
@@ -20,24 +23,71 @@ type WindowState = {
   cascadeOffset?: { x: number; y: number };
 };
 
+const WelcomeMessage = ({ onClose }: { onClose: () => void }) => (
+  <div style={{ padding: '20px', textAlign: 'center', cursor: 'pointer' }} onClick={onClose}>
+    <h2 style={{ marginBottom: '15px' }}>Welcome to KaylaOS!</h2>
+    <p style={{ marginBottom: '10px' }}>Thanks for stopping by my corner of the internet.</p>
+    <p style={{ marginBottom: '10px' }}>Feel free to click around and explore!</p>
+    <p style={{ fontSize: '14px', color: '#666', marginTop: '20px' }}>
+      Tip: Click on the desktop icons to open windows.
+    </p>
+    <p style={{ fontSize: '12px', color: '#999', marginTop: '10px', fontStyle: 'italic' }}>
+      (Click anywhere to close this message)
+    </p>
+  </div>
+);
+
 function Desktop() {
-  const [windows, setWindows] = useState<WindowState[]>([
-    { id: 'kayla_info', title: "Kayla_info.txt", content: <MyInfo/>, isMinimized: false, cascadeOffset: { x: 0, y: 0 } }
-  ]);
-  const [focusOrder, setFocusOrder] = useState<string[]>(['kayla_info']); // Track window focus order
+  const [windows, setWindows] = useState<WindowState[]>([]);
+  const [focusOrder, setFocusOrder] = useState<string[]>([]);
+  const [hasInteracted, setHasInteracted] = useState(false);
+  const [welcomeShown, setWelcomeShown] = useState(false);
+
+  // Play startup sound on first interaction (browser requires user gesture for audio)
+  useEffect(() => {
+    const handleFirstInteraction = () => {
+      if (!hasInteracted) {
+        resumeAudio();
+        playStartup();
+        setHasInteracted(true);
+      }
+    };
+
+    window.addEventListener('click', handleFirstInteraction, { once: true });
+    return () => window.removeEventListener('click', handleFirstInteraction);
+  }, [hasInteracted]);
+
+  // Show welcome window on mount
+  useEffect(() => {
+    if (!welcomeShown) {
+      const welcomeContent = <WelcomeMessage onClose={() => closeWelcome()} />;
+      setWindows([{ id: 'welcome', title: "Welcome!", content: welcomeContent, isMinimized: false, cascadeOffset: { x: 100, y: 50 } }]);
+      setFocusOrder(['welcome']);
+      setWelcomeShown(true);
+    }
+  }, []);
+
+  const closeWelcome = () => {
+    playWindowClose();
+    setWindows(prev => prev.filter(window => window.id !== 'welcome'));
+    setFocusOrder(prev => prev.filter(wid => wid !== 'welcome'));
+  };
 
   const closeWindow = (id: string) => {
+    playWindowClose();
     setWindows(windows.filter(window => window.id !== id));
     setFocusOrder(prev => prev.filter(wid => wid !== id));
   };
 
   const minimizeWindow = (id: string) => {
-    setWindows(windows.map(window => 
+    playMinimize();
+    setWindows(windows.map(window =>
       window.id === id ? { ...window, isMinimized: true } : window
     ));
   };
 
   const restoreWindow = (id: string) => {
+    playWindowOpen();
     setWindows(windows.map(window =>
       window.id === id ? { ...window, isMinimized: false } : window
     ));
@@ -57,6 +107,7 @@ function Desktop() {
         restoreWindow(id);
       }
     } else {
+      playWindowOpen();
       // Calculate cascade offset based on number of existing windows (30px down and right for each)
       const cascadeStep = 30;
       const cascadeOffset = {
@@ -70,6 +121,7 @@ function Desktop() {
   };
 
   const handleIconClick = (id: string) => {
+    playClick();
     switch (id) {
       case 'kayla_info':
         openWindow('kayla_info', 'Kayla_info.txt', <MyInfo/>);
@@ -100,13 +152,20 @@ function Desktop() {
       case 'linkedin':
         openWindow('linkedin', 'LinkedIn Profile', <LinkedInProfile />, { width: 600, height: 500 });
         break;
+      case 'system':
+        openWindow('system', 'System Properties', <SystemProperties />, { width: 400, height: 450 });
+        break;
     }
   };
 
 
   return (
     <>
+      <Screensaver idleTimeout={60000} />
       <div className="desktop-screen">
+        <div className="corner-icon">
+          <Icon name="System" icon="icons/computer.svg" onClick={() => handleIconClick('system')} />
+        </div>
         <div className="desktop-icons">
             <Icon name="Kayla_info.txt" icon="icons/person_icon.svg" onClick={() => handleIconClick('kayla_info')} />
             <Icon name="Kayla_McFarlane_Resume.pdf" icon="icons/file.svg" onClick={() => handleIconClick('kayla_resume')} />
@@ -172,6 +231,7 @@ function Bar({ windows, restoreWindow, setWindows, bringToFront }: BarProps) {
   // };
 
   const handleWindowClick = (id: string) => {
+    playClick();
     restoreWindow(id);
     bringToFront(id);
   };

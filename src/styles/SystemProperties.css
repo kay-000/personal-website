@@ -1,0 +1,157 @@
+.system-properties {
+  padding: 20px;
+  font-size: 16px;
+}
+
+.system-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #F2BED1;
+}
+
+.system-logo {
+  font-size: 36px;
+  margin-bottom: 5px;
+}
+
+.logo-text {
+  color: #F2BED1;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.logo-os {
+  color: #000;
+  font-weight: bold;
+}
+
+.system-version {
+  font-size: 14px;
+  color: #666;
+}
+
+.system-section {
+  margin-bottom: 20px;
+  padding: 12px;
+  background-color: #fef7fb;
+  border: 2px solid #000;
+  box-shadow:
+    inset 1px 1px 0 0 #ffffff,
+    inset -1px -1px 0 0 #8b8b8b;
+}
+
+.system-section h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  border-bottom: 1px dashed #F2BED1;
+  padding-bottom: 5px;
+}
+
+.system-section p {
+  margin: 4px 0;
+}
+
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.specs-table td {
+  padding: 4px 8px;
+}
+
+.specs-table td:first-child {
+  width: 100px;
+  font-weight: bold;
+  color: #666;
+}
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+}
+
+.status-label {
+  width: 120px;
+  font-size: 14px;
+}
+
+.progress-container {
+  flex: 1;
+  height: 16px;
+  background-color: #fff;
+  border: 2px solid #000;
+  box-shadow:
+    inset 1px 1px 0 0 #8b8b8b,
+    inset -1px -1px 0 0 #ffffff;
+}
+
+.progress-bar {
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    #F2BED1,
+    #F2BED1 8px,
+    #fcdee9 8px,
+    #fcdee9 10px
+  );
+}
+
+.progress-bar.caffeine {
+  background: repeating-linear-gradient(
+    90deg,
+    #8B4513,
+    #8B4513 8px,
+    #D2691E 8px,
+    #D2691E 10px
+  );
+}
+
+.progress-bar.snacks {
+  background: repeating-linear-gradient(
+    90deg,
+    #ff6b6b,
+    #ff6b6b 8px,
+    #ffa07a 8px,
+    #ffa07a 10px
+  );
+}
+
+.status-percent {
+  width: 50px;
+  text-align: right;
+  font-size: 14px;
+}
+
+.dark-mode-toggle {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-family: "VT323", monospace;
+  background-color: #F2BED1;
+  border: 2px solid #000;
+  box-shadow:
+    inset 2px 2px 0 0 #ffffff,
+    inset -2px -2px 0 0 #666666;
+}
+
+.dark-mode-toggle:hover {
+  background-color: #fcdee9;
+}
+
+.dark-mode-toggle:active {
+  box-shadow:
+    inset 2px 2px 0 0 #666666,
+    inset -2px -2px 0 0 #ffffff;
+  transform: translate(1px, 1px);
+}
+
+.system-footer {
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+  font-style: italic;
+  margin-top: 20px;
+}

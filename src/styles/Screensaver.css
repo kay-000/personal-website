@@ -1,0 +1,29 @@
+.screensaver {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #1a0a10 0%, #2d1f2d 50%, #1a0a10 100%);
+  z-index: 9999;
+  overflow: hidden;
+  cursor: none;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.screensaver-text {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+  font-family: "VT323", monospace;
+  letter-spacing: 2px;
+}

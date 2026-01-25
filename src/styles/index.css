@@ -6,4 +6,15 @@ body {
   padding:0;
   height: 100%;
   overflow: hidden;
+  transition: filter 0.3s ease;
+}
+
+body.dark-mode {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+body.dark-mode img,
+body.dark-mode video,
+body.dark-mode .profile-picture {
+  filter: invert(1) hue-rotate(180deg);
 }
