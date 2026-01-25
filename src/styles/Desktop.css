@@ -2,8 +2,10 @@
 .desktop-screen {
   width: 100%;
   height: 93.5vh;
-  /* background-color: #FDCEDF; */
-  background-color: #fcdee9; 
+  background-color: #fcdee9;
+  /* Pixelated robot pattern */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23f0c4d4' fill-opacity='0.4'%3E%3C!-- Robot head --%3E%3Crect x='28' y='8' width='24' height='20'/%3E%3C!-- Antenna --%3E%3Crect x='38' y='2' width='4' height='6'/%3E%3Crect x='36' y='0' width='8' height='4'/%3E%3C!-- Eyes --%3E%3Crect x='32' y='14' width='6' height='6' fill='%23fcdee9'/%3E%3Crect x='42' y='14' width='6' height='6' fill='%23fcdee9'/%3E%3C!-- Body --%3E%3Crect x='24' y='30' width='32' height='28'/%3E%3C!-- Arms --%3E%3Crect x='14' y='32' width='10' height='6'/%3E%3Crect x='56' y='32' width='10' height='6'/%3E%3Crect x='12' y='38' width='6' height='12'/%3E%3Crect x='62' y='38' width='6' height='12'/%3E%3C!-- Legs --%3E%3Crect x='28' y='58' width='8' height='14'/%3E%3Crect x='44' y='58' width='8' height='14'/%3E%3C!-- Feet --%3E%3Crect x='24' y='72' width='12' height='6'/%3E%3Crect x='44' y='72' width='12' height='6'/%3E%3C/g%3E%3C/svg%3E");
+  image-rendering: pixelated;
 }
 
 .desktop-bar {
