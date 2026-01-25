@@ -1,0 +1,8 @@
+body {
+  /* 
+    Specify the image URL first. 
+    The optional coordinates (e.g., 12 12) define the "hotspot" (the clickable point) of the cursor.
+    'auto' provides a generic fallback if the image fails to load.
+  */
+  cursor: url('/icons/cursor.png') 12 12, auto;
+}
