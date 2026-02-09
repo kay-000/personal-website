@@ -20,6 +20,7 @@ export default {
             borderRadius: '8px',
           }}
         />
+
       </div>
       <p>
         Studying is a stressful endeavor. Whether it's for a final exam at
@@ -41,33 +42,25 @@ export default {
       <p>
         Built for the ECE 18-500 capstone course.
         Check out the <a href="https://course.ece.cmu.edu/~ece500/projects/s25-teame6/introduction-and-project-summary/" target="_blank">website</a> for more info on the design process.
-      </p> 
-
-      <iframe 
-        src="/projects/studybearbot/studybear_site/client/index.html"
-        width="100%" 
-        height="500px"
-      ></iframe>
-
-
+      </p>
 
     </>
   ),
   techStack: ["React", "TypeScript"],
-  demo: "https://course.ece.cmu.edu/~ece500/projects/s25-teame6/introduction-and-project-summary/",
+  localDemo: "/projects/studybearbot/studybearbot_website_demo.mov",
   github: "https://github.com/kay-000/study-bear-bot",
   children: [                                                                                                                  
     {                                                                                                                          
       id: 'studybearbot-report',                                                                                               
       name: 'Final Report.pdf',                                                                                                
       type: 'file' as const,                                                                                                   
-      fileSrc: '/projects/studybearbot/PublicDemo_StudyBearbot_S25.pdf',  // Put file in public/documents/                                                      
+      fileSrc: '/projects/studybearbot/Final Report.pdf',                                                 
     },                                                                                                                         
     {                                                                                                                          
       id: 'studybearbot-schematic',                                                                                            
-      name: 'Schematic.pdf',                                                                                                   
+      name: 'Poster.pdf',                                                                                                   
       type: 'file' as const,                                                                                                   
-      fileSrc: 'https://drive.google.com/file/d/YOUR_ID/preview',  // Or Google Drive                                          
+      fileSrc: '/projects/studybearbot/PublicDemo_StudyBearbot_S25.pdf',                                       
     },                                                                                                                         
   ],     
 };
