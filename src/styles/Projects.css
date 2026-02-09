@@ -104,7 +104,7 @@
 .project-details .description {
   font-size: 18px;
   line-height: 1.6;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .tech-stack {
@@ -153,6 +153,29 @@
 }
 
 .project-links a:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #000;
+}
+
+.project-links .demo-button {
+  background-color: #F2BED1;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 2px solid #000;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: 'VT323', monospace;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  box-shadow: 2px 2px 0px #000;
+}
+
+.project-links .demo-button:hover {
+  background-color: #f5c9dc;
+}
+
+.project-links .demo-button:active {
   transform: translate(1px, 1px);
   box-shadow: 1px 1px 0px #000;
 }

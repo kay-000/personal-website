@@ -17,9 +17,9 @@ const LinkedInProfile: React.FC = () => {
         <h3>Experience</h3>
         <ul>
           <li>
-            <h4>Job Title</h4>
-            <p>Company Name</p>
-            <p>Date Range</p>
+            <h4>Gradute Robotics Student</h4>
+            <p>Carnegie Mellon University</p>
+            <p>May 2025 — August 2027</p>
             <p>Brief description of your role and achievements...</p>
           </li>
           {/* Add more list items for additional experiences */}

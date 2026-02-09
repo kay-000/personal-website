@@ -69,7 +69,7 @@
 }
 
 .content {
-  padding: 8px;
+  padding: 5%;
   flex: 1;
   overflow: auto;
   background-color: #F8E8EE;
@@ -82,6 +82,7 @@
     inset 1px 1px 0 0 #666666,
     inset -1px -1px 0 0 #fef7fb;
 }
+
 
 .window-container.maximized {
   position: fixed !important;

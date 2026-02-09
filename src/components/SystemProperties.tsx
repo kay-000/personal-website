@@ -30,19 +30,17 @@ const SystemProperties = () => {
           <tbody>
             <tr>
               <td>Model:</td>
-              <td>Kayla McFarlane v25.0</td>
+              <td>Kayla McFarlane v22.0</td>
             </tr>
             <tr>
               <td>Processor:</td>
-              <td>CMU Robotics Neural Engine</td>
+              <td>KaylaCore™ R9</td>
             </tr>
             <tr>
               <td>Memory:</td>
-              <td>ECE + Robotics Knowledge Base</td>
+              <td>32 GB...</td>
             </tr>
             <tr>
-              <td>Skills:</td>
-              <td>Problem Solving, Circuit Design, Building Cool Stuff</td>
             </tr>
           </tbody>
         </table>

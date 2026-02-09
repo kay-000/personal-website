@@ -1,0 +1,57 @@
+.robot-screensaver {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(180deg, #1a0a10 0%, #2d1f2d 100%);
+  z-index: 9999;
+  overflow: hidden;
+  cursor: none;
+}
+
+.pixel-robot {
+  position: absolute;
+  image-rendering: pixelated;
+  transition: opacity 0.5s;
+}
+
+.pixel-robot.walking {
+  animation: bob 0.3s ease-in-out infinite;
+}
+
+.pixel-robot.walking .left-leg,
+.pixel-robot.walking .left-foot {
+  animation: walkLeft 0.3s ease-in-out infinite;
+}
+
+.pixel-robot.walking .right-leg,
+.pixel-robot.walking .right-foot {
+  animation: walkRight 0.3s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes walkLeft {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-2px); }
+}
+
+@keyframes walkRight {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(2px); }
+}
+
+.screensaver-text {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+  font-family: "VT323", monospace;
+  letter-spacing: 2px;
+}
