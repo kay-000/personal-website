@@ -13,10 +13,11 @@ type WindowProps = {
   initialSize?: { width: number; height: number };
   cascadeOffset?: { x: number; y: number };
   zIndex?: number;
+  isActive?: boolean;
   onClick?: () => void;
 };
 
-function Window({ id, title, children, onClose, onMinimize, isMinimized, initialSize = { width: 500, height: 500 }, cascadeOffset = { x: 0, y: 0 }, zIndex = 0, onClick }: WindowProps) {
+function Window({ id, title, children, onClose, onMinimize, isMinimized, initialSize = { width: 500, height: 500 }, cascadeOffset = { x: 0, y: 0 }, zIndex = 0, isActive = true, onClick }: WindowProps) {
   const bannerRef = useRef<HTMLDivElement>(null);
   const [isMaximized, setIsMaximized] = useState(false);
   const [size, setSize] = useState(initialSize);
@@ -39,7 +40,7 @@ function Window({ id, title, children, onClose, onMinimize, isMinimized, initial
   return (
     <Draggable dragHandleRef={bannerRef} disableDragging={isMaximized} initialPosition={initialPosition} zIndex={zIndex} onClick={onClick}>
       <div
-        className={`window-container ${isMaximized ? 'maximized' : ''}`}
+        className={`window-container ${isMaximized ? 'maximized' : ''} ${isActive ? '' : 'inactive'}`}
         style={{ width: `${size.width}px`, height: `${size.height}px` }}
       >
         <div className='banner' ref={bannerRef}>

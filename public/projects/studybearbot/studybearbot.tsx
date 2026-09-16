@@ -1,27 +1,19 @@
+import AutoLoopVideo from '../../../src/components/AutoLoopVideo';
+import { asset } from '../../../src/utils/asset';
+
 export default {
   id: "studybearbot",
   name: "Study Bearbot",
   type: "project" as const,
   content: (
     <>
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        marginBottom: '20px'
-      }}>
-        <iframe
-          src="https://drive.google.com/file/d/1dhykhD6Cyhup7EtJELKrepAxROEMVOA2/preview"
-          allow="autoplay"
-          style={{
-            width: '100%',
-            maxWidth: '640px',
-            aspectRatio: '16/9',
-            border: 'none',
-            borderRadius: '8px',
-          }}
-        />
+      {/* Was a Google Drive iframe, which cannot autoplay or loop and
+          depends on an external service. This is the local showcase
+          clip that already ships with the demo site. */}
+      <AutoLoopVideo
+        src={asset('projects/studybearbot/studybear_site/client/videos/bearbot_showcase.mp4')}
+      />
 
-      </div>
       <p>
         Studying is a stressful endeavor. Whether it's for a final exam at
         university or for a weekly quiz in middle school, everyone needs a short break
@@ -47,20 +39,22 @@ export default {
     </>
   ),
   techStack: ["React", "TypeScript"],
-  localDemo: "/projects/studybearbot/studybearbot_website_demo.mov",
+  // The built companion web app, opened in its own window. Run
+  // `npm run fix-demo` if you change vite's base or rebuild it.
+  localDemo: asset('projects/studybearbot/studybear_site/client/index.html'),
   github: "https://github.com/kay-000/study-bear-bot",
-  children: [                                                                                                                  
-    {                                                                                                                          
-      id: 'studybearbot-report',                                                                                               
-      name: 'Final Report.pdf',                                                                                                
-      type: 'file' as const,                                                                                                   
-      fileSrc: '/projects/studybearbot/Final Report.pdf',                                                 
-    },                                                                                                                         
-    {                                                                                                                          
-      id: 'studybearbot-schematic',                                                                                            
-      name: 'Poster.pdf',                                                                                                   
-      type: 'file' as const,                                                                                                   
-      fileSrc: '/projects/studybearbot/PublicDemo_StudyBearbot_S25.pdf',                                       
-    },                                                                                                                         
-  ],     
+  children: [
+    {
+      id: 'studybearbot-report',
+      name: 'Final Report.pdf',
+      type: 'file' as const,
+      fileSrc: asset('projects/studybearbot/Final Report.pdf'),
+    },
+    {
+      id: 'studybearbot-schematic',
+      name: 'Poster.pdf',
+      type: 'file' as const,
+      fileSrc: asset('projects/studybearbot/PublicDemo_StudyBearbot_S25.pdf'),
+    },
+  ],
 };

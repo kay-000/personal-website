@@ -1,8 +1,10 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 import Desktop from './components/Desktop.tsx'
 import Login from './components/Login.tsx'
+
 
 function App() {
   return (

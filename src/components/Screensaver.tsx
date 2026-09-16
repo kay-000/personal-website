@@ -1,5 +1,12 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { ALL_PHOTOS } from '../data/gallery';
+import { isVideo } from '../data/notes/types';
 import '../styles/Screensaver.css';
+
+/* Auto-advancing a slideshow is the one place it's the RIGHT
+   behavior — and Win95 shipped exactly this screensaver. Falls
+   back to the bubbles when there are no photos yet. */
+const SLIDE_MS = 5000;
 
 type Bubble = {
   id: number;
@@ -19,7 +26,11 @@ type ScreensaverProps = {
 const Screensaver = ({ idleTimeout = 60000 }: ScreensaverProps) => {
   const [isActive, setIsActive] = useState(false);
   const [bubbles, setBubbles] = useState<Bubble[]>([]);
+  const [slide, setSlide] = useState(0);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const SLIDES = ALL_PHOTOS.filter((p) => !isVideo(p));
+  const slideshowMode = SLIDES.length > 0;
 
   const createBubbles = useCallback(() => {
     const newBubbles: Bubble[] = [];
@@ -77,9 +88,19 @@ const Screensaver = ({ idleTimeout = 60000 }: ScreensaverProps) => {
     };
   }, [isActive, startTimer, dismissScreensaver]);
 
+  // Advance the slideshow
+  useEffect(() => {
+    if (!isActive || !slideshowMode) return;
+    const interval = setInterval(
+      () => setSlide((s) => (s + 1) % SLIDES.length),
+      SLIDE_MS
+    );
+    return () => clearInterval(interval);
+  }, [isActive, slideshowMode]);
+
   // Animate bubbles
   useEffect(() => {
-    if (!isActive) return;
+    if (!isActive || slideshowMode) return;
 
     const animationInterval = setInterval(() => {
       setBubbles(prevBubbles =>
@@ -113,6 +134,22 @@ const Screensaver = ({ idleTimeout = 60000 }: ScreensaverProps) => {
   }, [isActive]);
 
   if (!isActive) return null;
+
+  if (slideshowMode) {
+    const photo = SLIDES[slide];
+    return (
+      <div className="screensaver slideshow" onClick={dismissScreensaver}>
+        <img
+          key={photo.src}
+          className="slide-image"
+          src={photo.src}
+          alt={photo.alt ?? photo.caption}
+        />
+        <div className="slide-caption">{photo.caption}</div>
+        <div className="screensaver-text">Move mouse or press any key to exit</div>
+      </div>
+    );
+  }
 
   return (
     <div className="screensaver" onClick={dismissScreensaver}>

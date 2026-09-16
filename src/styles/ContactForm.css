@@ -1,29 +1,13 @@
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  padding: 20px;
-  font-family: 'VT323', monospace;
+  gap: var(--sp-3);
+  padding: var(--sp-2);
+  font-family: var(--font-ui);
 }
 
-.contact-form input,
-.contact-form textarea {
-  font-family: 'VT323', monospace;
-  font-size: 16px;
-  padding: 10px;
-  border: 2px solid #F2BED1;
-  background-color: #FFFFFF;
-  border-radius: 4px;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: #F2BED1;
-  box-shadow: 0 0 0 3px rgba(242, 190, 209, 0.2);
-}
-
+/* Inputs, textareas and buttons inherit the shared Win95
+   control styling from index.css — only layout lives here. */
 .contact-form textarea {
   min-height: 120px;
   resize: vertical;
@@ -31,56 +15,34 @@
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-  color: #d4a5bb;
+  color: var(--c-text-dim);
 }
 
 .contact-form button {
-  font-family: 'VT323', monospace;
-  font-size: 18px;
-  padding: 10px 20px;
-  background-color: #F2BED1;
-  border: 2px solid #000000;
-  box-shadow: 2px 2px 0px #000;
-  cursor: pointer;
-  transition: transform 0.1s, box-shadow 0.1s;
-}
-
-.contact-form button:hover {
-  background-color: #f5c9dc;
-}
-
-.contact-form button:active {
-  transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0px #000;
-}
-
-.contact-form button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+  align-self: flex-end;
+  min-width: 90px;
 }
 
 .contact-form input:disabled,
 .contact-form textarea:disabled {
   opacity: 0.6;
-  cursor: not-allowed;
 }
 
 .status-message {
-  font-family: 'VT323', monospace;
-  font-size: 16px;
-  padding: 10px;
-  border-radius: 4px;
+  font-size: var(--fs-base);
+  padding: var(--sp-2);
   text-align: center;
+  border: 1px solid;
+  border-color: var(--bevel-in-border);
+  box-shadow: var(--bevel-in-shadow);
 }
 
 .status-message.success {
   background-color: #d4f4dd;
   color: #0f5132;
-  border: 2px solid #0f5132;
 }
 
 .status-message.error {
   background-color: #f8d7da;
   color: #842029;
-  border: 2px solid #842029;
 }

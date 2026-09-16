@@ -1,181 +1,154 @@
 .projects-container {
-  padding: 20px;
-  font-family: 'VT323', monospace;
+  padding: var(--sp-2);
+  font-family: var(--font-ui);
 }
 
 .breadcrumb {
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #F2BED1;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-4);
+  padding-bottom: var(--sp-2);
+  border-bottom: 1px solid var(--c-shadow);
 }
 
 .back-btn {
-  background-color: #F2BED1;
-  border: 2px solid #000;
-  padding: 5px 12px;
-  font-family: 'VT323', monospace;
-  font-size: 16px;
-  cursor: pointer;
-  box-shadow: 2px 2px 0px #000;
-  transition: transform 0.1s, box-shadow 0.1s;
-}
-
-.back-btn:hover {
-  background-color: #f5c9dc;
-}
-
-.back-btn:active {
-  transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0px #000;
+  padding: var(--sp-1) var(--sp-3);
+  font-size: var(--fs-base);
 }
 
 .breadcrumb-path {
-  font-size: 18px;
-  color: #666;
+  font-size: var(--fs-base);
+  color: var(--c-text-dim);
 }
 
 .breadcrumb-link {
-  cursor: pointer;
   text-decoration: underline;
-  color: #000;
+  color: var(--c-text);
 }
 
 .breadcrumb-link:hover {
-  color: #F2BED1;
+  color: var(--c-accent);
 }
 
 .breadcrumb-current {
-  color: #666;
+  color: var(--c-text-dim);
   font-weight: bold;
 }
 
 .projects-container h2 {
-  margin-bottom: 20px;
-  font-size: 24px;
+  margin-bottom: var(--sp-4);
+  font-size: var(--fs-lg);
 }
 
-.project-folders {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 20px;
-  padding: 10px;
-}
+/* Icon tiles live in FileTile.css, shared with note attachments. */
 
-.project-folder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-  padding: 10px;
-  border-radius: 4px;
-  transition: background-color 0.2s;
-}
-
-.project-folder:hover {
-  background-color: rgba(242, 190, 209, 0.2);
-}
-
-.project-folder svg {
-  margin-bottom: 8px;
-}
-
-.folder-name {
-  text-align: center;
-  font-size: 16px;
-  word-wrap: break-word;
-  max-width: 100px;
-}
-
-/* Project Details Styles */
+/* ---- Project detail view --------------------------------- */
 .project-details {
-  padding: 20px;
-  font-family: 'VT323', monospace;
+  padding: var(--sp-2);
+  font-family: var(--font-ui);
 }
 
 .project-details h2 {
-  font-size: 28px;
-  margin-bottom: 15px;
-  color: #000;
+  font-size: var(--fs-xl);
+  margin-bottom: var(--sp-3);
+}
+
+/* Media dropped inline in a project's content has no wrapper to
+   constrain it, so it would render at its intrinsic size and burst
+   out of the window. Gallery media is handled in PhotoGallery.css. */
+.project-details .description video,
+.project-details .description img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 40vh;
+  margin: 0 auto var(--sp-3);
+  object-fit: contain;
+  background-color: #000;
+  border: 1px solid;
+  border-color: var(--bevel-in-border);
+  box-shadow: var(--bevel-in-shadow);
 }
 
 .project-details .description {
-  font-size: 18px;
-  line-height: 1.6;
-  /* margin-bottom: 20px; */
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
 }
 
 .tech-stack {
-  margin-bottom: 20px;
+  margin-bottom: var(--sp-4);
 }
 
 .tech-stack h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: var(--fs-md);
+  margin-bottom: var(--sp-2);
 }
 
 .tech-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: var(--sp-1);
 }
 
 .tech-tag {
-  background-color: #F2BED1;
-  padding: 5px 12px;
-  border-radius: 4px;
-  font-size: 16px;
-  border: 1px solid #000;
+  background-color: var(--c-accent-light);
+  color: var(--c-text);
+  padding: 2px var(--sp-2);
+  font-size: var(--fs-sm);
+  border: 1px solid;
+  border-color: var(--bevel-out-border);
+  box-shadow: var(--bevel-out-shadow);
 }
 
 .project-links {
   display: flex;
-  gap: 15px;
-  margin-top: 20px;
+  gap: var(--sp-2);
+  margin-top: var(--sp-4);
 }
 
-.project-links a {
-  background-color: #F2BED1;
-  color: #000;
-  padding: 8px 16px;
-  text-decoration: none;
-  border: 2px solid #000;
-  border-radius: 4px;
-  font-size: 16px;
-  transition: background-color 0.2s;
-  box-shadow: 2px 2px 0px #000;
-}
-
-.project-links a:hover {
-  background-color: #f5c9dc;
-}
-
-.project-links a:active {
-  transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0px #000;
-}
-
+/* Links styled as buttons share the one bevel recipe */
+.project-links a,
 .project-links .demo-button {
-  background-color: #F2BED1;
-  color: #000;
-  padding: 8px 16px;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-ui);
+  font-size: var(--fs-base);
+  color: var(--c-text);
+  background-color: var(--c-face);
+  padding: var(--sp-1) var(--sp-3);
   text-decoration: none;
-  border: 2px solid #000;
-  border-radius: 4px;
-  font-size: 16px;
-  font-family: 'VT323', monospace;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  box-shadow: 2px 2px 0px #000;
+  border: 1px solid;
+  border-color: var(--bevel-out-border);
+  box-shadow: var(--bevel-out-shadow);
 }
 
+.project-links a:hover,
 .project-links .demo-button:hover {
-  background-color: #f5c9dc;
+  background-color: var(--c-face-alt);
 }
 
+.project-links a:active,
 .project-links .demo-button:active {
-  transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0px #000;
+  border-color: var(--bevel-in-border);
+  box-shadow: var(--bevel-in-shadow);
+}
+
+/* The timeline is genuinely terminal output — VT323 belongs here */
+.ascii-timeline {
+  font-family: var(--font-mono);
+  font-size: var(--fs-md);
+  line-height: 1.4;
+  background: transparent;
+  color: var(--c-text);
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* Projects without a write-up yet: one quiet line, not a wall of
+   bracketed placeholders. */
+.project-stub {
+  color: var(--c-text-dim);
+  font-style: italic;
+  padding: var(--sp-2) 0;
 }

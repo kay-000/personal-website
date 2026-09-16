@@ -1,0 +1,280 @@
+/* Type colors — mid-saturation so they hold up in both themes */
+.timeline {
+  --t-research: #c2185b;
+  --t-project: #1976a2;
+  --t-training: #6a4c9c;
+  --t-award: #b8860b;
+  --t-industry: #2e7d5b;
+  --t-service: #c05621;
+  --t-education: #4a5b8c;
+
+  font-family: var(--font-ui);
+  font-size: var(--fs-base);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+body.dark-mode .timeline {
+  --t-research: #ff6fa3;
+  --t-project: #5cc0ec;
+  --t-training: #b18ce6;
+  --t-award: #e6c34a;
+  --t-industry: #58c295;
+  --t-service: #eb9a5e;
+  --t-education: #8fa3e0;
+}
+
+.type-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  margin-right: 6px;
+  border: 1px solid var(--c-dark);
+}
+
+.type-research { background: var(--t-research); }
+.type-project { background: var(--t-project); }
+.type-training { background: var(--t-training); }
+.type-award { background: var(--t-award); }
+.type-industry { background: var(--t-industry); }
+.type-service { background: var(--t-service); }
+.type-education { background: var(--t-education); }
+
+/* ---- Filter chips ---------------------------------------- */
+.timeline-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+  margin-bottom: var(--sp-2);
+  flex-shrink: 0;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--fs-sm);
+  padding: 2px var(--sp-2);
+}
+
+.filter-chip.active {
+  border-color: var(--bevel-in-border);
+  box-shadow: var(--bevel-in-shadow);
+  background-color: var(--c-accent-light);
+  font-weight: bold;
+}
+
+/* ---- Column layout --------------------------------------- */
+.timeline-head,
+.timeline-row {
+  display: grid;
+  grid-template-columns: 82px 1fr 106px;
+  gap: var(--sp-2);
+  align-items: baseline;
+}
+
+.timeline-head {
+  flex-shrink: 0;
+  background-color: var(--c-face);
+  padding: 0;
+  margin-bottom: 2px;
+}
+
+.timeline-head .col {
+  font-size: var(--fs-sm);
+  font-weight: bold;
+  padding: 3px var(--sp-2);
+  border: 1px solid;
+  border-color: var(--bevel-out-border);
+  box-shadow: var(--bevel-out-shadow);
+  background-color: var(--c-face);
+  text-align: left;
+}
+
+.timeline-head .sortable:active {
+  border-color: var(--bevel-in-border);
+  box-shadow: var(--bevel-in-shadow);
+  padding: 4px calc(var(--sp-2) - 1px) 2px calc(var(--sp-2) + 1px);
+}
+
+/* ---- Scrolling body -------------------------------------- */
+.timeline-body {
+  flex: 1;
+  overflow-y: auto;
+  background-color: var(--c-field);
+  border: 1px solid;
+  border-color: var(--bevel-in-border);
+  box-shadow: var(--bevel-in-shadow);
+  padding: var(--sp-1) 0;
+}
+
+.year-header {
+  font-family: var(--font-mono);
+  font-size: var(--fs-lg);
+  color: var(--c-accent);
+  padding: var(--sp-2) var(--sp-2) 2px;
+  border-bottom: 1px solid var(--c-accent-light);
+  margin-bottom: 2px;
+  position: sticky;
+  top: 0;
+  background-color: var(--c-field);
+  z-index: 1;
+}
+
+.timeline-row {
+  padding: 3px var(--sp-2);
+  border: 1px dotted transparent;
+}
+
+.timeline-row.clickable:hover {
+  background-color: var(--c-accent);
+  color: var(--c-accent-text);
+  border-color: var(--c-dark);
+}
+
+.timeline-row.clickable:hover .item-detail,
+.timeline-row.clickable:hover .col-date,
+.timeline-row.clickable:hover .col-type {
+  color: var(--c-accent-text);
+}
+
+.timeline-row.clickable:focus-visible {
+  outline: 1px dotted var(--c-accent);
+  outline-offset: -2px;
+}
+
+.col-date {
+  font-size: var(--fs-sm);
+  color: var(--c-text-dim);
+  white-space: nowrap;
+}
+
+.col-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.item-title {
+  line-height: 1.35;
+}
+
+/* Linked rows read as links: accent colour, solid underline, and a
+   glyph showing where the row goes (▸ project, ▤ note, ▩ album). */
+.timeline-row.clickable .item-title {
+  color: var(--c-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.timeline-row.clickable:hover .item-title {
+  color: var(--c-accent-text);
+}
+
+.link-glyph {
+  display: inline-block;
+  margin-right: 5px;
+  text-decoration: none;
+  opacity: 0.75;
+}
+
+.item-detail {
+  font-size: var(--fs-sm);
+  color: var(--c-text-dim);
+  line-height: 1.3;
+}
+
+.badge-now {
+  display: inline-block;
+  margin-left: var(--sp-2);
+  padding: 0 4px;
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  vertical-align: 1px;
+  color: var(--c-accent-text);
+  background-color: var(--c-accent);
+  border: 1px solid var(--c-dark);
+}
+
+.col-type {
+  display: flex;
+  align-items: center;
+  font-size: var(--fs-sm);
+  color: var(--c-text-dim);
+  white-space: nowrap;
+}
+
+/* ---- Coursework disclosure ------------------------------- */
+.coursework-toggle {
+  display: block;
+  width: calc(100% - var(--sp-4));
+  margin: 2px var(--sp-2) var(--sp-2);
+  padding: 2px var(--sp-2);
+  text-align: left;
+  font-size: var(--fs-sm);
+  color: var(--c-text-dim);
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.coursework-toggle:hover:not(:disabled) {
+  background-color: var(--c-face-alt);
+  color: var(--c-text);
+}
+
+.coursework-toggle:active:not(:disabled) {
+  border: none;
+  box-shadow: none;
+  padding: 2px var(--sp-2);
+}
+
+.coursework-list {
+  margin: 0 var(--sp-2) var(--sp-3) var(--sp-5);
+  padding: 0;
+  list-style: square;
+  font-size: var(--fs-sm);
+  color: var(--c-text-dim);
+  columns: 2;
+  column-gap: var(--sp-4);
+}
+
+.coursework-list li {
+  margin-bottom: 2px;
+  break-inside: avoid;
+}
+
+.timeline-empty {
+  padding: var(--sp-4);
+  color: var(--c-text-dim);
+  font-style: italic;
+}
+
+/* ---- Status bar ------------------------------------------ */
+.timeline-status {
+  flex-shrink: 0;
+  margin-top: 2px;
+  padding: 2px var(--sp-2);
+  font-size: var(--fs-sm);
+  color: var(--c-text-dim);
+  border: 1px solid;
+  border-color: var(--bevel-in-border);
+  box-shadow: var(--bevel-in-shadow);
+}
+
+@media (max-width: 560px) {
+  .timeline-head,
+  .timeline-row {
+    grid-template-columns: 64px 1fr;
+  }
+  .timeline-head .col-type,
+  .timeline-row .col-type {
+    display: none;
+  }
+  .coursework-list {
+    columns: 1;
+  }
+}

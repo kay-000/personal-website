@@ -1,0 +1,43 @@
+/* Explorer-style icon tiles, shared by the Projects tree and note
+   attachments so files look identical wherever they appear. */
+.file-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: var(--sp-3);
+  padding: var(--sp-2);
+}
+
+.file-tile {
+  color: var(--c-accent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--sp-2);
+  border: 1px dotted transparent;
+}
+
+.file-tile:hover {
+  border-color: var(--c-accent);
+  background-color: color-mix(in srgb, var(--c-accent) 15%, transparent);
+}
+
+.file-tile:active {
+  background-color: var(--c-accent);
+}
+
+.file-tile:active .file-tile-name {
+  color: var(--c-accent-text);
+}
+
+.file-tile svg {
+  margin-bottom: var(--sp-2);
+}
+
+.file-tile-name {
+  color: var(--c-text);
+  text-align: center;
+  font-size: var(--fs-sm);
+  line-height: 1.25;
+  word-wrap: break-word;
+  max-width: 96px;
+}

@@ -1,0 +1,111 @@
+/* ============================================================
+   Design tokens — single source of truth for the KaylaOS look.
+   Everything else in src/styles should reference these, never
+   hardcode a pink or re-type the bevel recipe.
+   ============================================================ */
+
+:root {
+  /* --- Type ------------------------------------------------ */
+  /* Tahoma is the closest widely-installed match to the Win95
+     UI font (MS Sans Serif). VT323 stays for terminal moments. */
+  --font-ui: Tahoma, Verdana, "DejaVu Sans", sans-serif;
+  --font-mono: "VT323", "Courier New", monospace;
+
+  --fs-xs: 11px;
+  --fs-sm: 12px;
+  --fs-base: 13px;
+  --fs-md: 15px;
+  --fs-lg: 18px;
+  --fs-xl: 22px;
+  --fs-2xl: 28px;
+
+  --lh-tight: 1.3;
+  --lh-base: 1.55;
+
+  /* --- Surfaces -------------------------------------------- */
+  --c-light: #fffdfe; /* top-left highlight  */
+  --c-face: #f8e8ee; /* window / button face */
+  --c-face-alt: #fcdee9; /* secondary face, hover */
+  --c-shadow: #b98ba2; /* mid shadow          */
+  --c-dark: #24141c; /* outer edge          */
+  --c-desktop: #fcdee9;
+  --c-field: #ffffff; /* input + content wells */
+
+  /* --- Accent (title bars, selection) ---------------------- */
+  --c-accent: #d9527f;
+  --c-accent-light: #f2bed1;
+  --c-accent-text: #fffdfe;
+  --c-inactive: #b9a6ae; /* unfocused title bar */
+  --c-inactive-text: #ede4e8;
+
+  /* --- Text ------------------------------------------------ */
+  --c-text: #1a1014;
+  --c-text-dim: #6b5561;
+
+  /* --- Bevels ----------------------------------------------
+     Authentic Win95 chrome is a DOUBLE bevel: a 1px outer ring
+     plus a 1px inset ring, so edges read as two-tone. Apply as:
+       border: 1px solid;
+       border-color: var(--bevel-out-border);
+       box-shadow: var(--bevel-out-shadow);
+     ...or just add the .bevel-out / .bevel-in class.          */
+  --bevel-out-border: var(--c-face-alt) var(--c-dark) var(--c-dark)
+    var(--c-face-alt);
+  --bevel-out-shadow: inset 1px 1px 0 var(--c-light),
+    inset -1px -1px 0 var(--c-shadow);
+
+  --bevel-in-border: var(--c-shadow) var(--c-light) var(--c-light)
+    var(--c-shadow);
+  --bevel-in-shadow: inset 1px 1px 0 var(--c-dark),
+    inset -1px -1px 0 var(--c-face-alt);
+
+  /* --- Spacing --------------------------------------------- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+}
+
+/* ============================================================
+   Dark theme — modeled on the Win95 "High Contrast Black"
+   scheme. Only the tokens change; no filters, no inversion.
+   ============================================================ */
+body.dark-mode {
+  --c-light: #5a4a52;
+  --c-face: #241c20;
+  --c-face-alt: #332830;
+  --c-shadow: #000000;
+  --c-dark: #000000;
+  --c-desktop: #140f12;
+  --c-field: #0d090b;
+
+  --c-accent: #8c2f52;
+  --c-accent-light: #c96b90;
+  --c-accent-text: #fff4f8;
+  --c-inactive: #3d323a;
+  --c-inactive-text: #9c8d94;
+
+  --c-text: #f5e9ee;
+  --c-text-dim: #b09aa4;
+}
+
+/* --- Bevel utilities (for new markup) --------------------- */
+.bevel-out {
+  border: 1px solid;
+  border-color: var(--bevel-out-border);
+  box-shadow: var(--bevel-out-shadow);
+}
+
+.bevel-in {
+  border: 1px solid;
+  border-color: var(--bevel-in-border);
+  box-shadow: var(--bevel-in-shadow);
+}
+
+/* Pressed state: swap the bevel and nudge content down-right,
+   the way a real Win95 button does. */
+.bevel-out:active:not(:disabled) {
+  border-color: var(--bevel-in-border);
+  box-shadow: var(--bevel-in-shadow);
+}

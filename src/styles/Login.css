@@ -1,84 +1,41 @@
-
 .login-container {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fcdee9; 
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--c-desktop);
+}
 
-  }
+/* Scoped to the login screen — this used to be a bare
+   .window-container rule that leaked onto every window. */
+.login-container .window-container {
+  min-height: 260px;
+}
 
-  .window-container{
-    height: 40vh; 
-    width: 40vw;
-    /* background-color: orange;  */
-  }
-  
-  /* .content {
-    padding: 5%;
-  }
-   */
-  /* .content p {
-    margin-bottom: 5%;
-  } */
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--sp-3);
+}
 
-  .form-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 3%;
-  }
-  
-  .form-group label {
-    width: 30%;
-    text-align: right;
-    margin-right: 3%;
-  }
-  
-  .form-group input {
-    flex-grow: 1;
-    padding: 4px;
-    background-color: white;
-    font-family: "VT323", sans-serif;
-    /* Windows 95 inset input field */
-    border-top: 2px solid #8b8b8b;
-    border-left: 2px solid #8b8b8b;
-    border-bottom: 2px solid #ffffff;
-    border-right: 2px solid #ffffff;
-    box-shadow:
-      inset 1px 1px 0 0 #666666,
-      inset -1px -1px 0 0 #fef7fb;
-  }
-  
-  .button-group {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 5%;
-  }
-  
-  .button-group button {
-    margin-left: 3%;
-    padding: 4px 12px;
-    background-color: #F8E8EE;
-    cursor: pointer;
-    font-family: "VT323", sans-serif;
-    /* Classic Windows 95 raised button */
-    border-top: 2px solid #ffffff;
-    border-left: 2px solid #ffffff;
-    border-bottom: 2px solid #666666;
-    border-right: 2px solid #666666;
-    box-shadow:
-      inset 1px 1px 0 0 #fef7fb,
-      inset -1px -1px 0 0 #8b8b8b;
-  }
+.form-group label {
+  width: 30%;
+  text-align: right;
+  margin-right: var(--sp-3);
+  font-size: var(--fs-base);
+}
 
-  .button-group button:active {
-    /* Inset look when pressed */
-    border-top: 2px solid #666666;
-    border-left: 2px solid #666666;
-    border-bottom: 2px solid #ffffff;
-    border-right: 2px solid #ffffff;
-    box-shadow:
-      inset 1px 1px 0 0 #8b8b8b,
-      inset -1px -1px 0 0 #fef7fb;
-    padding: 5px 11px 3px 13px;
-  }
+.form-group input {
+  flex-grow: 1;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--sp-2);
+  margin-top: var(--sp-4);
+}
+
+.button-group button {
+  min-width: 80px;
+}

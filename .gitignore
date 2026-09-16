@@ -26,3 +26,6 @@ dist-ssr
 *.pdf
 Kayla_McFarlane_CV.pdf
 Kayla_McFarlane_Resume.pdf
+
+# Scratch / working notes (not for the repo)
+temp/

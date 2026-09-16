@@ -1,20 +1,107 @@
+@import "./tokens.css";
+
+html,
+body,
+#root {
+  font-family: var(--font-ui);
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+  color: var(--c-text);
+}
 
 body {
-  font-family: "VT323", sans-serif;
-  background-color:#F9F5F6;
-  margin:0;
-  padding:0;
+  background-color: var(--c-desktop);
+  margin: 0;
+  padding: 0;
   height: 100%;
   overflow: hidden;
-  transition: filter 0.3s ease;
+  /* Crisp edges on the pixel-art wallpaper + icons */
+  -webkit-font-smoothing: antialiased;
 }
 
-body.dark-mode {
-  filter: invert(1) hue-rotate(180deg);
+/* ---- Headings: tighter, and sized off the scale ---------- */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-ui);
+  line-height: var(--lh-tight);
+  color: var(--c-text);
+  margin: 0 0 var(--sp-2) 0;
 }
 
-body.dark-mode img,
-body.dark-mode video,
-body.dark-mode .profile-picture {
-  filter: invert(1) hue-rotate(180deg);
+h1 {
+  font-size: var(--fs-xl);
+}
+h2 {
+  font-size: var(--fs-lg);
+}
+h3 {
+  font-size: var(--fs-md);
+}
+h4 {
+  font-size: var(--fs-base);
+}
+
+p {
+  margin: 0 0 var(--sp-3) 0;
+}
+
+/* ---- Shared Win95 control styling ------------------------
+   Buttons everywhere get the bevel by default so individual
+   components stop re-declaring it.                          */
+button {
+  font-family: var(--font-ui);
+  font-size: var(--fs-base);
+  color: var(--c-text);
+  background-color: var(--c-face);
+  padding: var(--sp-1) var(--sp-3);
+  border: 1px solid;
+  border-color: var(--bevel-out-border);
+  box-shadow: var(--bevel-out-shadow);
+}
+
+button:hover:not(:disabled) {
+  background-color: var(--c-face-alt);
+}
+
+button:active:not(:disabled) {
+  border-color: var(--bevel-in-border);
+  box-shadow: var(--bevel-in-shadow);
+  /* Content shifts down-right on press, like the real thing */
+  padding: calc(var(--sp-1) + 1px) calc(var(--sp-3) - 1px)
+    calc(var(--sp-1) - 1px) calc(var(--sp-3) + 1px);
+}
+
+button:disabled {
+  color: var(--c-text-dim);
+  opacity: 0.7;
+}
+
+/* Text fields are sunken, never raised */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  font-family: var(--font-ui);
+  font-size: var(--fs-base);
+  color: var(--c-text);
+  background-color: var(--c-field);
+  padding: var(--sp-1) var(--sp-2);
+  border: 1px solid;
+  border-color: var(--bevel-in-border);
+  box-shadow: var(--bevel-in-shadow);
+}
+
+input:focus,
+textarea:focus {
+  outline: 1px dotted var(--c-accent);
+  outline-offset: -3px;
+}
+
+/* Terminal-flavored content keeps VT323 — it earns it here */
+.ascii-timeline,
+.terminal,
+.cursor {
+  font-family: var(--font-mono);
 }

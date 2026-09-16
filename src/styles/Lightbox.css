@@ -1,0 +1,120 @@
+/* Full-size photo view, shared by My Pictures and by notes. */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4vh 4vw;
+  background: rgba(20, 12, 16, 0.85);
+}
+
+.lightbox-inner {
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  max-height: 92vh;
+  width: 100%;
+  padding: 3px;
+  background-color: var(--c-face);
+  border: 1px solid;
+  border-color: var(--bevel-out-border);
+  box-shadow: var(--bevel-out-shadow), 2px 2px 0 0 var(--c-dark);
+}
+
+/* ---- Stage ------------------------------------------------ */
+.lightbox-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 0;
+  padding: var(--sp-2);
+  background-color: #000;
+  border: 1px solid;
+  border-color: var(--bevel-in-border);
+  box-shadow: var(--bevel-in-shadow);
+}
+
+.lightbox-stage img,
+.lightbox-stage video {
+  display: block;
+  max-width: 100%;
+  max-height: 72vh;
+  object-fit: contain;
+}
+
+/* ---- Prev / next ------------------------------------------ */
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 34px;
+  height: 52px;
+  padding: 0;
+  font-size: 26px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-arrow.prev {
+  left: var(--sp-2);
+}
+
+.lightbox-arrow.next {
+  right: var(--sp-2);
+}
+
+.lightbox-arrow:active:not(:disabled) {
+  /* Override the global press-nudge; these are fixed-size */
+  padding: 1px 0 0 1px;
+}
+
+/* ---- Caption bar ------------------------------------------ */
+.lightbox-bar {
+  flex-shrink: 0;
+  padding: var(--sp-3) var(--sp-2) var(--sp-2);
+}
+
+.lightbox-caption {
+  margin: 0 0 var(--sp-2);
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+  color: var(--c-text);
+}
+
+.lightbox-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
+
+/* The way back to the note a photo came from */
+.lightbox-source {
+  font-size: var(--fs-sm);
+  color: var(--c-accent);
+  font-weight: bold;
+}
+
+.lightbox-counter {
+  margin-left: auto;
+  font-size: var(--fs-sm);
+  color: var(--c-text-dim);
+}
+
+@media (max-width: 560px) {
+  .lightbox {
+    padding: 2vh 2vw;
+  }
+  .lightbox-arrow {
+    width: 28px;
+    height: 44px;
+    font-size: 20px;
+  }
+}
