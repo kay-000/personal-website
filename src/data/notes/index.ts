@@ -35,6 +35,8 @@ import { attachPhotos, PHOTO_FOLDERS } from '../photos';
 import { PROJECT_IDS } from '../projects';
 import type { Note } from './types';
 
+import iros2026 from './iros-2026';
+import roscon2026 from './roscon-2026';
 import fziKit2026 from './fzi-kit-2026';
 import jensen2026 from './jensen-2026';
 import sii2026 from './sii-2026';
@@ -50,6 +52,8 @@ export type { Note, NoteSection, Photo, Attachment } from './types';
 export { isVideo } from './types';
 
 const WRITTEN: Note[] = [
+  iros2026,
+  roscon2026,
   fziKit2026,
   jensen2026,
   sii2026,

@@ -9,7 +9,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build && touch dist/.nojekyll",
+    "deploy": "gh-pages -d dist -t -b main -r https://github.com/kay-000/kay-000.github.io.git",
     "media": "node scripts/prepare-media.mjs",
     "fix-demo": "node scripts/fix-demo-paths.mjs"
   },

@@ -20,17 +20,22 @@ type WindowProps = {
 function Window({ id, title, children, onClose, onMinimize, isMinimized, initialSize = { width: 500, height: 500 }, cascadeOffset = { x: 0, y: 0 }, zIndex = 0, isActive = true, onClick }: WindowProps) {
   const bannerRef = useRef<HTMLDivElement>(null);
   const [isMaximized, setIsMaximized] = useState(false);
-  const [size, setSize] = useState(initialSize);
+  // Never open larger than the screen, minus the 30px taskbar
+  const fitted = {
+    width: Math.min(initialSize.width, window.innerWidth - 16),
+    height: Math.min(initialSize.height, window.innerHeight - 46),
+  };
+  const [size, setSize] = useState(fitted);
 
-  // Calculate centered position with cascade offset
+  // Centered with cascade offset, clamped so the title bar stays on screen
   const initialPosition = {
-    x: (window.innerWidth - initialSize.width) / 2 + cascadeOffset.x,
-    y: (window.innerHeight - initialSize.height) / 2 + cascadeOffset.y,
+    x: Math.max(8, Math.min((window.innerWidth - fitted.width) / 2 + cascadeOffset.x, window.innerWidth - fitted.width - 8)),
+    y: Math.max(8, Math.min((window.innerHeight - fitted.height) / 2 + cascadeOffset.y, window.innerHeight - fitted.height - 38)),
   };
 
   const maximizeWindow = () => {
     setIsMaximized(!isMaximized);
-    setSize(isMaximized ? initialSize : { width: window.innerWidth, height: window.innerHeight });
+    setSize(isMaximized ? fitted : { width: window.innerWidth, height: window.innerHeight - 30 });
   };
 
   if (isMinimized) {

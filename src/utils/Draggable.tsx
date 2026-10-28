@@ -14,9 +14,13 @@ function Draggable({ children, dragHandleRef, disableDragging = false, initialPo
   const [isDragging, setIsDragging] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
 
-  const handleMouseDown = (e: React.MouseEvent) => {
+  // Pointer events cover mouse, touch and pen with one code path
+  const handlePointerDown = (e: React.PointerEvent) => {
     if (disableDragging) return;
-    if (dragHandleRef.current && dragHandleRef.current.contains(e.target as Node)) {
+    const target = e.target as HTMLElement;
+    // Let the title bar buttons be tapped without starting a drag
+    if (target.closest('button')) return;
+    if (dragHandleRef.current && dragHandleRef.current.contains(target)) {
       setIsDragging(true);
       setOffset({
         x: e.clientX - position.x,
@@ -25,31 +29,37 @@ function Draggable({ children, dragHandleRef, disableDragging = false, initialPo
     }
   };
 
-  const handleMouseMove = (e: MouseEvent) => {
+  const handlePointerMove = (e: PointerEvent) => {
     if (!isDragging || disableDragging) return;
+    // Keep at least 60px of the title bar on screen so it can be grabbed back
     setPosition({
-      x: e.clientX - offset.x,
-      y: e.clientY - offset.y,
+      x: Math.min(Math.max(e.clientX - offset.x, 60 - (dragHandleRef.current?.offsetWidth ?? 0)), window.innerWidth - 60),
+      y: Math.min(Math.max(e.clientY - offset.y, 0), window.innerHeight - 60),
     });
   };
 
-  const handleMouseUp = () => {
+  const handlePointerUp = () => {
     setIsDragging(false);
   };
 
   useEffect(() => {
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener('pointermove', handlePointerMove);
+    document.addEventListener('pointerup', handlePointerUp);
+    document.addEventListener('pointercancel', handlePointerUp);
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener('pointermove', handlePointerMove);
+      document.removeEventListener('pointerup', handlePointerUp);
+      document.removeEventListener('pointercancel', handlePointerUp);
     };
   }, [isDragging, offset, disableDragging]);
 
   return (
     <div
-      onMouseDown={handleMouseDown}
-      onClick={onClick}
+      onPointerDown={handlePointerDown}
+      // Raise on pointer-down, not click. A click bubbles up after the
+      // child's handler has already opened a new window, so raising
+      // here on click pulled this window back over the new one.
+      onPointerDownCapture={onClick}
       style={{
         position: 'absolute',
         left: `${position.x}px`,

@@ -1,6 +1,7 @@
 .desktop-screen {
   width: 100%;
   height: calc(100vh - 30px);
+  height: calc(100dvh - 30px);
   background-color: var(--c-desktop);
   position: relative;
   overflow: hidden;
@@ -84,6 +85,8 @@ body.dark-mode .desktop-screen::before {
   display: inline-flex;
   align-items: center;
   max-width: 160px;
+  min-width: 0;
+  flex-shrink: 1;
   height: 22px;
   padding: 0 var(--sp-2);
   font-size: var(--fs-sm);
@@ -225,4 +228,21 @@ body.dark-mode .desktop-screen::before {
   margin: var(--sp-1) var(--sp-2);
   background-color: var(--c-shadow);
   border-bottom: 1px solid var(--c-light);
+}
+
+/* Phones: taskbar buttons share the space, and the wallpaper
+   branding steps back so it doesn't sit under the icons */
+@media (max-width: 600px) {
+  .desktop-bar .window-title {
+    max-width: 96px;
+  }
+
+  .desktop-bar .start-button,
+  .desktop-bar .time-block {
+    flex-shrink: 0;
+  }
+
+  .desktop-brand .brand-name {
+    font-size: 40px;
+  }
 }

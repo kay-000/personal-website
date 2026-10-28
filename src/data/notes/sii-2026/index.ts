@@ -4,23 +4,23 @@ const note: Note = {
   id: 'sii-2026',
   filename: 'ieee_sice_sii.txt',
   title: 'Volunteering at IEEE/SICE SII 2026',
-  date: 'January 2026 · Cancún, Mexico',
+  date: 'January 2026, Cancún, Mexico',
   summary:
     'IEEE/SICE International Symposium on System Integration — conference volunteer.',
   tags: ['conference', 'service', 'mexico'],
   order: ['96901018-f147-4470-a0d8-c017b1edfafb.jpg'],
   captions: {
     '96901018-f147-4470-a0d8-c017b1edfafb.jpg':
-      'The volunteer team under the SII 2026 banner in Cancún.',
-    'dsc_0159.jpg': 'Working the registration desk, handing out attendee badges.',
+      'SII 2026 volunteers, including Kayla, posing inside the conference venue in Cancún.',
+    'dsc_0159.jpg': 'Kayla handing out materials to attendees at the registration table.',
     'dsc_1254.jpg':
-      'An attendee teleoperating a humanoid robot through a VR headset at one of the demo stands.',
-    'dsc_1108.jpg': 'The volunteer team on the rooftop at the end of a long day.',
-    'dsc_1297.jpg': 'Dinner with the other volunteers.',
-    'dsc_2260.jpg': 'The volunteers at the beach reception.',
-    'dsc_2287.jpg': 'At the beach reception on the last night.',
+      'An attendee in a VR headset teleoperating a humanoid robot, both giving a thumbs-up.',
+    'dsc_1108.jpg': 'Kayla and the volunteer team posing on a rooftop.',
+    'dsc_1297.jpg': 'Kayla and other volunteers eating dinner at a round table.',
+    'dsc_2260.jpg': 'Kayla and other volunteers on the beach at the night reception.',
+    'dsc_2287.jpg': 'Kayla on the beach on the last night of SII.',
     '1bce553f-3214-4af4-9383-911f4bae84e9.jpg':
-      'Obligatory stop at the Cancún sign with two of the other volunteers.',
+      'Kayla and two other volunteers standing behind the Cancún sign at the beach.',
   },
   draft: false,
   sections: [

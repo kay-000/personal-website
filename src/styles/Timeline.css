@@ -278,3 +278,86 @@ body.dark-mode .timeline {
     columns: 1;
   }
 }
+
+/* ---- Pinned highlights ------------------------------------
+   The handful of things worth seeing first, as cards with a
+   photo. Everything else stays in the Details list below.    */
+.timeline-pinned {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-2);
+  flex-shrink: 0;
+}
+
+.pinned-card {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: stretch;
+  padding: var(--sp-1);
+  text-align: left;
+  background-color: var(--c-field);
+}
+
+.pinned-card:hover:not(:disabled) {
+  background-color: var(--c-accent);
+  color: var(--c-accent-text);
+}
+
+.pinned-thumb {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--c-face-alt);
+  border: 1px solid;
+  border-color: var(--bevel-in-border);
+  overflow: hidden;
+}
+
+.pinned-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pinned-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  padding: 2px 0;
+}
+
+.pinned-date {
+  font-family: var(--font-mono);
+  font-size: var(--fs-md);
+  line-height: 1;
+  color: var(--c-accent);
+}
+
+.pinned-title {
+  font-weight: bold;
+  line-height: 1.25;
+}
+
+.pinned-detail {
+  font-size: var(--fs-sm);
+  color: var(--c-text-dim);
+  line-height: 1.3;
+}
+
+.pinned-card:hover .pinned-date,
+.pinned-card:hover .pinned-detail {
+  color: var(--c-accent-text);
+}
+
+.rest-toggle {
+  align-self: flex-start;
+  margin-bottom: var(--sp-2);
+  font-size: var(--fs-sm);
+  flex-shrink: 0;
+}

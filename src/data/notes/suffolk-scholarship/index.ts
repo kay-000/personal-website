@@ -12,7 +12,7 @@ const note: Note = {
   draft: false,
   captions: {
     'award.jpg':
-      'Receiving the award in the Town of Babylon board room, June 2021, with Supervisor Rich Schaffer, Deputy Supervisor Tony Martinez and the Town Board.',
+      'Kayla holding her scholarship check with Town of Babylon officials, June 2021.',
   },
   attachments: [
     {

@@ -30,17 +30,12 @@ const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
     <>
       <figure className="gallery-hero">
         {isVideo(hero) ? (
-          <AutoLoopVideo src={hero.src} poster={hero.poster} />
+          <AutoLoopVideo src={hero.src} poster={hero.poster} label={hero.alt ?? hero.caption} />
         ) : (
-          <button
-            className="gallery-hero-image"
-            onClick={() => setIndex(0)}
-            title={hero.caption}
-          >
+          <button className="gallery-hero-image" onClick={() => setIndex(0)}>
             <img src={hero.src} alt={hero.alt ?? hero.caption} />
           </button>
         )}
-        <figcaption>{hero.caption}</figcaption>
       </figure>
 
       {rest.length > 0 && (
@@ -50,7 +45,6 @@ const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
               key={photo.src}
               className="gallery-thumb"
               onClick={() => setIndex(i + 1)}
-              title={photo.caption}
             >
               <span className="gallery-thumb-frame">
                 {isVideo(photo) ? (
@@ -62,7 +56,6 @@ const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
                   <img src={photo.src} alt={photo.alt ?? photo.caption} />
                 )}
               </span>
-              <span className="gallery-thumb-caption">{photo.caption}</span>
             </button>
           ))}
         </div>

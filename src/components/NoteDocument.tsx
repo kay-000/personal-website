@@ -37,6 +37,20 @@ const NoteDocument = ({ noteId, onOpenFile }: NoteDocumentProps) => {
 
       <PhotoGallery photos={note.photos ?? []} />
 
+      {note.youtube && (
+        <div className="note-video">
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${note.youtube}`}
+            title={note.title}
+            allow="encrypted-media; picture-in-picture"
+            allowFullScreen
+          />
+          <a href={`https://youtu.be/${note.youtube}`} target="_blank" rel="noreferrer">
+            Watch on YouTube
+          </a>
+        </div>
+      )}
+
       {note.sections.map((section, si) => (
         <section key={section.heading ?? si} className="note-section">
           {section.heading && <h3>{section.heading}</h3>}

@@ -12,6 +12,11 @@ import Notes from './Notes';
 import NoteDocument from './NoteDocument';
 import SystemProperties from './SystemProperties';
 import Screensaver from './Screensaver'; 
+import Readme from './Readme';
+import MiffyPeek from './MiffyPeek';
+import Pocket from './Pocket';
+import { usePocket } from '../utils/usePocket';
+import { START_MENU_ITEMS } from '../data/startMenu';
   // import RobotScreensaver from './RobotScreensaver';                                                                           
 import type { TimelineLink } from '../data/timeline';
 import { NOTES_BY_ID } from '../data/notes';
@@ -62,21 +67,8 @@ const getWindowConfigs = (
   system: { id: 'system', title: 'System Properties', getContent: () => <SystemProperties />, initialSize: { width: 400, height: 450 } },
 });
 
-const WelcomeMessage = ({ onClose }: { onClose: () => void }) => (
-  <div style={{ padding: '20px', textAlign: 'center'}} onClick={onClose}>
-    <h2 style={{ marginBottom: '15px' }}>Welcome to KaylaOS!</h2>
-    <p style={{ marginBottom: '10px' }}>Thanks for stopping by my corner of the internet.</p>
-    <p style={{ marginBottom: '10px' }}>Feel free to click around and explore!</p>
-    <p style={{ fontSize: '14px', color: '#666', marginTop: '20px' }}>
-      Tip: Click on the desktop icons to open windows.
-    </p>
-    <p style={{ fontSize: '12px', color: '#999', marginTop: '10px', fontStyle: 'italic' }}>
-      (Click anywhere to close this message)
-    </p>
-  </div>
-);
-
 function Desktop() {
+  const pocket = usePocket();
   const [windows, setWindows] = useState<WindowState[]>([]);
   const [focusOrder, setFocusOrder] = useState<string[]>([]);
   const [hasInteracted, setHasInteracted] = useState(() => {
@@ -259,10 +251,10 @@ function Desktop() {
       }
     }
 
-    // Show welcome only on first visit ever
+    // First visit: the README of highlights
     if (!welcomeShown) {
-      const welcomeContent = <WelcomeMessage onClose={() => closeWelcome()} />;
-      setWindows(prev => [{ id: 'welcome', title: "Welcome!", content: welcomeContent, isMinimized: false, cascadeOffset: { x: 100, y: 50 } }, ...prev]);
+      const welcomeContent = <Readme onNavigate={handleNavigate} onOpenWindow={handleIconClick} />;
+      setWindows(prev => [{ id: 'welcome', title: 'README.txt', content: welcomeContent, isMinimized: false, initialSize: { width: 580, height: 600 }, cascadeOffset: { x: 0, y: 0 } }, ...prev]);
       setFocusOrder(prev => ['welcome', ...prev]);
       sessionStorage.setItem('hasSeenWelcome', 'true');
       setWelcomeShown(true);
@@ -294,12 +286,6 @@ function Desktop() {
       sessionStorage.removeItem('openWindows');
     }
   }, [windows]);
-
-  const closeWelcome = () => {
-    playWindowClose();
-    setWindows(prev => prev.filter(window => window.id !== 'welcome'));
-    setFocusOrder(prev => prev.filter(wid => wid !== 'welcome'));
-  };
 
   const closeWindow = (id: string) => {
     playWindowClose();
@@ -375,6 +361,9 @@ function Desktop() {
   const handleIconClick = (id: string) => {
     playClick();
     switch (id) {
+      case 'readme':
+        openWindow('welcome', 'README.txt', <Readme onNavigate={handleNavigate} onOpenWindow={handleIconClick} />, { width: 580, height: 600 });
+        break;
       case 'kayla_info':
         openWindow('kayla_info', 'Kayla_info.txt', <MyInfo onNavigate={handleNavigate} />);
         break;
@@ -418,11 +407,29 @@ function Desktop() {
   };
 
 
+  // Phones get the Pocket layout: same windows, one at a time
+  if (pocket) {
+    return (
+      <>
+        <Screensaver idleTimeout={300000} />
+        <Pocket
+          windows={windows}
+          focusOrder={focusOrder}
+          onOpen={handleIconClick}
+          onClose={closeWindow}
+          onSwitch={restoreWindow}
+          onHome={() => setWindows(prev => prev.map(w => ({ ...w, isMinimized: true })))}
+        />
+      </>
+    );
+  }
+
   return (
     <>
-      <Screensaver idleTimeout={300000} /> {/* 5 mins == 300000 ms */} 
+      <Screensaver idleTimeout={300000} /> {/* 5 mins == 300000 ms */}
       {/* <RobotScreensaver idleTimeout={5000} />  {/* short timeout for testing */}                                               
       <div className="desktop-screen">
+        <MiffyPeek />
         <div className="desktop-brand">
           <div className="brand-name">KaylaOS</div>
           <div className="brand-tag">Robotics @ CMU</div>
@@ -431,6 +438,7 @@ function Desktop() {
           <Icon name="System" icon={asset("icons/computer.svg")} onClick={() => handleIconClick('system')} />
         </div>
         <div className="desktop-icons">
+            <Icon name="README.txt" icon={asset("icons/person_icon.svg")} onClick={() => handleIconClick('readme')} />
             <Icon name="Kayla_info.txt" icon={asset("icons/person_icon.svg")} onClick={() => handleIconClick('kayla_info')} />
             <Icon name="Kayla_McFarlane_Resume.pdf" icon={asset("icons/file.svg")} onClick={() => handleIconClick('kayla_resume')} />
             <Icon name="Kayla_McFarlane_CV.pdf" icon={asset("icons/file.svg")} onClick={() => handleIconClick('kayla_cv')} />
@@ -476,22 +484,6 @@ type BarProps = {
   bringToFront: (id: string) => void;
   onMenuSelect: (id: string) => void;
 };
-
-// Start menu contents. `null` renders a separator.
-const START_MENU_ITEMS: ({ id: string; label: string; icon: string } | null)[] = [
-  { id: 'kayla_info', label: 'About Me', icon: 'icons/person_icon.svg' },
-  { id: 'projects', label: 'Projects', icon: 'icons/folder.svg' },
-  { id: 'pictures', label: 'My Pictures', icon: 'icons/folder.svg' },
-  { id: 'notes', label: 'Notes', icon: 'icons/file.svg' },
-  { id: 'kayla_resume', label: 'Resume', icon: 'icons/file.svg' },
-  { id: 'kayla_cv', label: 'CV', icon: 'icons/file.svg' },
-  null,
-  { id: 'contact', label: 'Contact', icon: 'icons/email.svg' },
-  { id: 'github', label: 'GitHub', icon: 'icons/github_icon.svg' },
-  { id: 'linkedin', label: 'LinkedIn', icon: 'icons/linkedin_icon.svg' },
-  null,
-  { id: 'system', label: 'System Properties', icon: 'icons/computer.svg' },
-];
 
 function Bar({ windows, restoreWindow, bringToFront, onMenuSelect }: BarProps) {
   const [currentTime, setCurrentTime] = useState(getTime());

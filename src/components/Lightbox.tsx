@@ -15,7 +15,7 @@ type LightboxProps<P extends Photo> = {
 
 /* Full-size photo view, shared by My Pictures and by notes so the
    behavior is identical in both: click a thumbnail to enlarge,
-   arrows to move through the set, caption underneath. */
+   arrows to move through the set. */
 function Lightbox<P extends Photo>({
   photos,
   index,
@@ -55,7 +55,7 @@ function Lightbox<P extends Photo>({
           )}
 
           {isVideo(photo) ? (
-            <AutoLoopVideo key={photo.src} src={photo.src} poster={photo.poster} />
+            <AutoLoopVideo key={photo.src} src={photo.src} poster={photo.poster} label={photo.alt ?? photo.caption} />
           ) : (
             <img key={photo.src} src={photo.src} alt={photo.alt ?? photo.caption} />
           )}
@@ -72,7 +72,6 @@ function Lightbox<P extends Photo>({
         </div>
 
         <div className="lightbox-bar">
-          <p className="lightbox-caption">{photo.caption}</p>
           <div className="lightbox-meta">
             {footer?.(photo)}
             <span className="lightbox-counter">

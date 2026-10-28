@@ -1,0 +1,148 @@
+.readme {
+  padding: var(--sp-2);
+  max-width: 560px;
+}
+
+.readme-head {
+  display: flex;
+  gap: var(--sp-3);
+  align-items: center;
+  margin-bottom: var(--sp-3);
+}
+
+.readme-head img {
+  width: 84px;
+  height: 84px;
+  object-fit: cover;
+  border: 1px solid;
+  border-color: var(--bevel-in-border);
+  box-shadow: var(--bevel-in-shadow);
+  flex-shrink: 0;
+}
+
+.readme-head > div {
+  min-width: 0;
+}
+
+.readme-head h2 {
+  font-size: var(--fs-xl);
+  margin: 0;
+}
+
+.readme-role {
+  color: var(--c-accent);
+  font-weight: bold;
+  margin: 2px 0 var(--sp-1);
+}
+
+.readme h3 {
+  font-size: var(--fs-base);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-accent);
+  margin: var(--sp-3) 0 var(--sp-2);
+}
+
+.readme-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: var(--c-field);
+  border: 1px solid;
+  border-color: var(--bevel-in-border);
+  box-shadow: var(--bevel-in-shadow);
+}
+
+.readme-list li + li {
+  border-top: 1px solid var(--c-face-alt);
+}
+
+/* Rows reset the global bevel button into a plain list row */
+.readme-list button {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 6px var(--sp-2);
+  cursor: pointer;
+}
+
+.readme-list button:hover,
+.readme-list button:focus-visible {
+  background: var(--c-accent);
+  color: var(--c-accent-text);
+}
+
+.readme-list button:hover .readme-detail,
+.readme-list button:focus-visible .readme-detail {
+  color: var(--c-accent-text);
+}
+
+.readme-label {
+  font-weight: bold;
+}
+
+.readme-label::before {
+  content: '\25B8  ';
+  color: var(--c-accent);
+}
+
+.readme-list button:hover .readme-label::before {
+  color: inherit;
+}
+
+.readme-detail {
+  font-size: var(--fs-sm);
+  color: var(--c-text-dim);
+  padding-left: 14px;
+}
+
+.readme-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-3);
+}
+
+@media (max-width: 480px) {
+  .readme-head img {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+/* ---- Jensen hero ------------------------------------------ */
+.readme-hero {
+  margin: 0 0 var(--sp-3);
+}
+
+.readme-hero video {
+  display: block;
+  width: 100%;
+  border: 1px solid;
+  border-color: var(--bevel-in-border);
+  box-shadow: var(--bevel-in-shadow);
+  background: #000;
+}
+
+.readme-hero figcaption {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-base);
+}
+
+/* An inline text link, not a bevelled button */
+.readme-link {
+  all: unset;
+  color: var(--c-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.readme-link:focus-visible {
+  outline: 1px dotted var(--c-accent);
+}

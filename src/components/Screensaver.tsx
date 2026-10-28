@@ -145,7 +145,6 @@ const Screensaver = ({ idleTimeout = 60000 }: ScreensaverProps) => {
           src={photo.src}
           alt={photo.alt ?? photo.caption}
         />
-        <div className="slide-caption">{photo.caption}</div>
         <div className="screensaver-text">Move mouse or press any key to exit</div>
       </div>
     );

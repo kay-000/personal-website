@@ -12,12 +12,12 @@ const note: Note = {
   draft: false,
   captions: {
     'jensen-huang-cmu.mp4':
-      'Walking into Margaret Morrison Neighborhood Commons with Jensen Huang, Dean Martial Hebert and Dean Burcu Akinci.',
-    'commencement-1.jpg': 'With Jensen Huang before the demos began.',
+      'Kayla walking with Jensen Huang, Martial Hebert, and Burcu Akinci toward the commons.',
+    'commencement-1.jpg': 'Kayla and Jensen Huang posing next to a Carnegie Mellon banner.',
     'commencement-3.jpg':
-      'Talking through the student demos with him, robot controller on the table between us.',
+      'Jensen Huang talking with Kayla beside a student demo table.',
     'commencement.jpg':
-      'The full group of CMU robotics students who showed their work that day, with one of the humanoids off to the left.',
+      'Jensen Huang posing with robotics students and staff in the commons, with a humanoid robot at left.',
   },
   sections: [
     {

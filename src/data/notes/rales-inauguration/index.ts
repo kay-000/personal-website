@@ -12,29 +12,30 @@ const note: Note = {
   order: ['img_4692.jpg'],
   captions: {
     'img_4692.jpg':
-      'The 2025 cohort of Carnegie Mellon Rales Fellows on stage at the welcome reception and induction ceremony.',
+      'The 2025 Rales Fellows and university leaders on stage at the induction ceremony.',
     'img_4783.jpg':
-      'Being welcomed on stage, with my School of Computer Science and Robotics affiliation up on the screen behind.',
-    'img_4712.jpg': 'Signing the Rales Fellows book during the ceremony.',
-    'img_4900.jpg': 'Shaking hands at the podium after being inducted.',
+      'Kayla shaking hands with Josh Rales on stage as she is introduced.',
+    'img_4712.jpg': 'Kayla signing the Rales Fellows book on stage.',
+    'img_4900.jpg': 'Kayla shaking hands with the speaker at the podium.',
     // Original, pending the third person's name:
     // 'With Josh Rales, President of the Rales Foundation, and [name], in front of the CMU Rales Fellows banner.'
     'img_4806.jpg':
-      'With Josh Rales, President of the Rales Foundation, in front of the CMU Rales Fellows banner.',
+      'Kayla on stage with Josh Rales and another guest in front of the CMU Rales Fellows banner.',
     'img_4798.jpg':
-      'Josh Rales, President of the Rales Foundation, addressing the incoming cohort.',
-    'img_4791.jpg': 'Gifts laid out for the incoming fellows.',
-    'img_4772.jpg': 'Fellows and program staff at the reception beforehand.',
+      'Josh Rales speaking to the audience from the podium.',
+    'img_4791.jpg': 'Wrapped gifts with CMU Rales Fellows tags laid out on a table.',
+    'img_4772.jpg': 'Kayla and other guests standing around a cocktail table at the reception.',
     'img_4738.jpg':
-      'Dinner conversation with Martial Hebert, Dean of the School of Computer Science.',
+      'Kayla seated with Martial Hebert and other guests at a dinner table.',
     // 'img_4854.jpg': 'More of the dinner, talking with [name].',
-    'img_4854.jpg': 'More of the dinner.',
+    'img_4854.jpg': 'Kayla talking with Martial Hebert across the dinner table.',
     // 'img_3364.jpg': 'With Josh Rales and [name] at the reception.',
-    'img_3364.jpg': 'With Josh Rales at the reception.',
+    'img_3364.jpg': 'Kayla taking a selfie with Josh Rales and another guest at the reception.',
     'd4bb1fb9-0058-47e6-9716-270e24b4fad2.jpg':
-      'A group of us from the cohort with Josh Rales.',
+      'Kayla and other Rales Fellows posing with Josh Rales at the reception.',
     // Uncaptioned until you say what it is — renders with no caption.
-    // 'screenrecording_10-02-2025-16-56-19_1.mp4': '[What is this clip?]',
+    'screenrecording_10-02-2025-16-56-19_1.mp4':
+      'Livestream footage of Kayla being introduced, signing the fellows book, and posing on stage with Josh Rales.',
   },
   sections: [
     {

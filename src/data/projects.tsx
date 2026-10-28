@@ -63,32 +63,126 @@ const TREE: FolderItem[] = [
         techStack: ['Python', 'ROS'],
       },
       {
-        id: 'adversarial',
-        name: 'Adversarial AI Project',
-        type: 'project',
-        // content: TODO('Adversarial AI — AirLab, 2026–present.'),
-        techStack: ['Python'],
-      },
-      {
         id: 'firevision',
         name: 'FIReVision',
         type: 'project',
-        // content: TODO('AirLab Wildfire Project, May–Sept 2023. A photorealistic thermal infrared simulator.'),
-        techStack: ['Python'],
+        content: (
+          <>
+            <p>
+              FIReVision is a photorealistic thermal infrared wildfire simulator,
+              built on AirSim and Unreal Engine 5 as part of the AirLab Wildfire
+              Project, which aims to give firefighters real-time situational
+              awareness during wildfires.
+            </p>
+            <p>
+              Drones are a natural fit for watching a fire, but the simulators
+              available to train and test them were thin. Most were 2D, lacked
+              realistic drone dynamics, had no camera-based perception, and left
+              out the things that matter on a fireline, like crews and vehicles.
+              FIReVision renders realistic RGB and thermal imagery with dynamic
+              smoke, so navigation and detection get tested in degraded,
+              hazardous conditions, and it labels its own data for object
+              detection and depth estimation.
+            </p>
+            <p>
+              I built the automated synthetic-data pipeline that generated more
+              than 15,000 RGB, thermal, depth and segmentation images for
+              training perception models, along with the Python tools for drone
+              control, real-time object detection, data collection and pipeline
+              validation. I also made the smoke, using FluidNinja in Unreal
+              Engine, so perception could be tested under degraded visibility.
+            </p>
+            <p>
+              I presented FIReVision as a poster at CMU's Meeting of the Minds
+              Undergraduate Research Symposium in May 2024, and put together the
+              technical demos used in stakeholder and grant presentations.
+            </p>
+          </>
+        ),
+        techStack: ['Python', 'Unreal Engine 5', 'AirSim', 'FluidNinja'],
+        // Video lives in src/assets/pictures/firevision/ and leads the page
+        captions: {
+          'firevision_demo.mp4': 'Demo video of FIReVision showing simulated forest scenes with thermal, depth, and object detection views.',
+        },
+        children: [
+          { id: 'firevision-poster', name: 'Poster.pdf', type: 'file' as const, fileSrc: asset('projects/firevision/Poster.pdf') },
+          { id: 'firevision-slides', name: 'Presentation.pdf', type: 'file' as const, fileSrc: asset('projects/firevision/Presentation.pdf') },
+          { id: 'firevision-slides-short', name: '3-Minute Talk.pdf', type: 'file' as const, fileSrc: asset('projects/firevision/3-Minute Talk.pdf') },
+        ],
       },
+      /* Hidden for now. Uncomment to bring Inverse Rendering back.
       {
         id: 'inverse-rendering',
         name: 'Inverse Rendering',
         type: 'project',
-        // content: TODO('AirLab Wildfire Project, Sept–Dec 2023.'),
-        techStack: ['Python'],
-      },
+        content: (
+          <>
+            <p>
+              Part of the AirLab Wildfire Project, fall 2023. I built small
+              vegetation scenes in Blender, with grass, shrubs and bare trees,
+              and rendered each scene from many camera angles.
+            </p>
+            <p>
+              I also set up the plant materials, mapping a leaf color texture
+              and a leaf translucency texture onto Blender's Principled BSDF
+              shader.
+            </p>
+          </>
+        ),
+        techStack: ['Python', 'Blender'],
+        // Renders live in src/assets/pictures/inverse-rendering/
+        order: ['view-08.jpg', 'plant-render.jpg', 'leaf-material-nodes.jpg'],
+        captions: {
+          'view-08.jpg': 'Blender render of a vegetation patch with grass, shrubs and bare trees, seen from above at an angle.',
+          'plant-render.jpg': 'Test render of a potted plant in Blender.',
+          'leaf-material-nodes.jpg': 'Blender shader nodes mapping leaf color and leaf translucency textures onto a Principled BSDF.',
+          'view-00.jpg': 'The vegetation scene rendered from another camera angle.',
+          'view-01.jpg': 'The vegetation scene rendered from another camera angle.',
+          'view-02.jpg': 'The vegetation scene rendered from another camera angle.',
+          'view-03.jpg': 'The vegetation scene rendered from another camera angle.',
+          'view-06.jpg': 'The vegetation scene rendered from another camera angle.',
+          'view-07.jpg': 'The vegetation scene rendered from another camera angle.',
+          'view-10.jpg': 'The vegetation scene rendered from another camera angle.',
+          'view-12.jpg': 'The vegetation scene rendered from another camera angle.',
+          'view-13.jpg': 'The vegetation scene rendered from another camera angle.',
+          'view-14.jpg': 'The vegetation scene rendered from another camera angle.',
+          'view-15.jpg': 'The vegetation scene rendered from another camera angle.',
+          'view-18.jpg': 'The vegetation scene rendered from another camera angle.',
+          'view-19.jpg': 'The vegetation scene rendered from another camera angle.',
+          'view-21.jpg': 'The vegetation scene rendered from another camera angle.',
+        },
+      }, */
       {
         id: 'ipp',
         name: 'Informative Path Planning (IPP)',
         type: 'project',
-        // content: TODO('AirLab, Jan–May 2023. Your first project after joining via HURAY.'),
+        content: (
+          <>
+            <p>
+              Part of the AirLab Wildfire Project, 2023. I designed wireframes
+              for an interface to plan and monitor drone missions over a
+              wildfire.
+            </p>
+            <p>
+              On the Mission Design screen, the user uploads a map of the fire
+              area and sets the mission parameters. The Mission Execution
+              screen shows an interactive map of the drones and fires beside a
+              camera and parameter panel. Clicking a drone or a fire zooms the
+              map to that area and narrows the panel to its details, including
+              assets near the heat such as people and trucks. Parameters can
+              also be edited while the mission runs.
+            </p>
+          </>
+        ),
         techStack: ['Python'],
+        children: [
+          {
+            id: 'ipp-wireframes',
+            name: 'IPP GUI Wireframes.pdf',
+            type: 'file' as const,
+            fileSrc: asset('projects/ipp/IPP GUI Wireframes.pdf'),
+          },
+        ],
       },
       {
         id: 'hri',
@@ -202,10 +296,10 @@ const TREE: FolderItem[] = [
         ],
         captions: {
           'img_7312.mp4':
-            'Pitching Infernot as a wildfire defense system at the Swartz Center.',
-          // 'img_7313.mp4': '[What is happening in this clip?]',
+            'The Infernot team presenting the opening slide of their pitch at the Swartz Center.',
+          'img_7313.mp4': 'The team presenting the wildfire threat slide during the Infernot pitch.',
           'img_5606.jpg':
-            'The team at the Swartz Center for Entrepreneurship after the pitch.',
+            'The five-person Infernot team in front of Swartz Center for Entrepreneurship banners.',
         },
       },
       {
@@ -240,24 +334,53 @@ const TREE: FolderItem[] = [
         // Pinning a still here makes it the hero instead.
         order: ['img_3540.jpg'],
         captions: {
-          'img_3540.jpg': 'The team at the Wireless Innovation Hackathon.',
-          'img_3533.mp4': 'Hands in before the final presentations.',
+          'img_3540.jpg': 'Kayla and four teammates in Wireless Innovation Hackathon shirts.',
+          'img_3533.mp4': 'Teammates at the hackathon, followed by Nightingale running at the demo table.',
           'img_3512.jpg':
-            'The prototype on the breadboard, with the record button, microphone and speaker wired up.',
+            'The first Nightingale prototype on a breadboard with buttons, a microphone, and a speaker.',
           'img_3522.jpg':
-            'The pipeline running end to end. Record for ten seconds, clean the background noise with SoX, then transcribe with Whisper.',
+            'Terminal output from Nightingale recording, cleaning, and transcribing audio.',
           'img_3523.jpg':
-            'Working through the build docs on the projector late in the night.',
-          'img_3515.jpg': 'The workbench partway through the build.',
-          'img_3508.jpg': 'Coffee break with the team.',
+            'Kayla taking a selfie with the team at the demo table.',
+          'img_3515.jpg': 'The team\'s table with laptops and boxes of electronic parts.',
+          'img_3508.jpg': 'Kayla taking a selfie with the team at a cafe.',
         },
       },
       {
         id: 'vivian',
         name: 'Project Vivian — A Caribbean Voice Assistant',
         type: 'project',
-        // content: TODO('SheInnovates Hackathon, Feb 2024.'),
-        // techStack: ['[stack]'],
+        content: (
+          <>
+            <p>
+              Vivian is a voice assistant for Caribbean English-based
+              languages, built with Julie Lawler and Brandon Yasin at the
+              SheInnovates Hackathon in February 2024. Most speech-to-text
+              systems fail on Caribbean creoles, which leaves a lot of people
+              shut out of voice technology.
+            </p>
+            <p>
+              You speak to Vivian in creole. She transcribes it, translates it
+              into standard English, works out a response, and answers out loud.
+              I led the technical design of the speech pipeline, built on
+              Whisper for transcription and ElevenLabs for her voice.
+            </p>
+            <p>
+              The hardest part was data. There isn't enough recorded Caribbean
+              speech to train a model properly, which showed how much more
+              collection and fine-tuning underrepresented dialects still need.
+            </p>
+          </>
+        ),
+        techStack: ['Python', 'Whisper', 'ElevenLabs', 'Pygame'],
+        children: [
+          {
+            id: 'vivian-deck',
+            name: 'SheInnovates Presentation.pdf',
+            type: 'file' as const,
+            fileSrc: asset('projects/vivian/SheInnovates Presentation.pdf'),
+          },
+        ],
       },
     ],
   },
@@ -309,15 +432,15 @@ const TREE: FolderItem[] = [
         order: ['20240610_170321583_ios.jpg'],
         captions: {
           '20240610_170321583_ios.jpg':
-            'The 2024 DigITs intern cohort at Memorial Sloan Kettering in New York.',
+            'The 2024 MSK DigITs interns, including Kayla, in the office.',
           'thank-you-interns-digits-internship-2024.mp4':
-            'The thank-you video DigITs put together for the 2024 interns.',
+            'The DigITs team\'s 2024 thank-you video for the interns.',
           'img_8733.jpg':
-            'A team-building exercise during the internship, building a structure out of pencils.',
-          'img_8885.jpg': 'Interns at a summer social along the water.',
+            'Kayla and other interns building a structure out of pencils during a team-building exercise.',
+          'img_8885.jpg': 'Kayla and other interns at an outdoor table by the water.',
           'ffb9f1cf-88fe-45d8-aa60-1fcd5543592c.jpg':
-            'More of the same afternoon.',
-          // 'image-1-.jpg': '[What is this one?]',
+            'Interns clapping at an outdoor table during an outing.',
+          'image-1-.jpg': 'Kayla and six others on a video call.',
         },
       },
     ],

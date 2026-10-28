@@ -7,6 +7,7 @@ import {
   type TimelineEntry,
   type TimelineLink,
 } from '../data/timeline';
+import { thumbForLink } from '../utils/thumb';
 import '../styles/Timeline.css';
 
 type TimelineProps = {
@@ -29,11 +30,19 @@ const Timeline = ({ onNavigate }: TimelineProps) => {
   const [filter, setFilter] = useState<EntryType | 'all'>('all');
   const [newestFirst, setNewestFirst] = useState(true);
   const [openCoursework, setOpenCoursework] = useState<Record<number, boolean>>({});
+  const [showRest, setShowRest] = useState(false);
 
+  // "All" leads with the pinned highlights as cards; the rest of the
+  // list sits collapsed under them. A type filter shows its full list.
+  const pinned = useMemo(() => ENTRIES.filter((e) => e.highlight), []);
   const visible = useMemo(
-    () => (filter === 'all' ? ENTRIES : ENTRIES.filter((e) => e.type === filter)),
+    () =>
+      filter === 'all'
+        ? ENTRIES.filter((e) => !e.highlight)
+        : ENTRIES.filter((e) => e.type === filter),
     [filter]
   );
+  const listOpen = filter !== 'all' || showRest;
 
   // Group into years, then order the year headings
   const years = useMemo(() => {
@@ -71,6 +80,38 @@ const Timeline = ({ onNavigate }: TimelineProps) => {
         ))}
       </div>
 
+      {/* ---- Pinned highlights ---- */}
+      {filter === 'all' && (
+        <>
+          <div className="timeline-pinned">
+            {pinned.map((entry) => {
+              const thumb = thumbForLink(entry.link);
+              return (
+                <button
+                  key={entry.id}
+                  className="pinned-card"
+                  onClick={() => handleRowClick(entry)}
+                >
+                  <span className="pinned-thumb">
+                    {thumb ? <img src={thumb} alt="" loading="lazy" /> : <span className={`type-dot type-${entry.type}`} />}
+                  </span>
+                  <span className="pinned-text">
+                    <span className="pinned-date">{entry.date} {entry.year}</span>
+                    <span className="pinned-title">{entry.title}</span>
+                    {entry.detail && <span className="pinned-detail">{entry.detail}</span>}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+          <button className="rest-toggle" onClick={() => setShowRest((v) => !v)}>
+            {showRest ? '▾' : '▸'} Everything else ({visible.length})
+          </button>
+        </>
+      )}
+
+      {listOpen && (
+      <>
       {/* ---- Column headers (Explorer "Details" view) ---- */}
       <div className="timeline-head">
         <button
@@ -159,10 +200,12 @@ const Timeline = ({ onNavigate }: TimelineProps) => {
           <p className="timeline-empty">Nothing filed under that type yet.</p>
         )}
       </div>
+      </>
+      )}
 
       <div className="timeline-status">
-        {visible.length} item{visible.length === 1 ? '' : 's'}
-        {filter !== 'all' && ` · filtered by ${TYPE_LABELS[filter]}`}
+        {filter === 'all' ? pinned.length + visible.length : visible.length} items
+        {filter !== 'all' && `, filtered by ${TYPE_LABELS[filter]}`}
       </div>
     </div>
   );

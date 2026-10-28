@@ -1,4 +1,5 @@
 import { PUBLISHED_NOTES } from '../data/notes';
+import { stillFor } from '../utils/thumb';
 import '../styles/Notes.css';
 
 type NotesProps = {
@@ -6,8 +7,9 @@ type NotesProps = {
   onOpenNote?: (noteId: string) => void;
 };
 
-/* The file browser. Each note opens as its own window, the way
-   Notepad opened one window per document — see NoteDocument.tsx. */
+/* The file browser, in Explorer's Thumbnails view so it reads
+   differently from the Details-view timeline. Each note opens as
+   its own window — see NoteDocument.tsx. */
 const Notes = ({ onOpenNote }: NotesProps) => (
   <div className="notes">
     <h2>Notes</h2>
@@ -22,23 +24,28 @@ const Notes = ({ onOpenNote }: NotesProps) => (
         set <code>draft: false</code> to publish.
       </p>
     ) : (
-      <div className="note-list">
-        {PUBLISHED_NOTES.map((n) => (
-          <button
-            key={n.id}
-            className="note-row"
-            onClick={() => onOpenNote?.(n.id)}
-          >
-            <span className="note-row-icon" aria-hidden="true">
-              ▤
-            </span>
-            <span className="note-row-main">
-              <span className="note-row-name">{n.filename}</span>
-              <span className="note-row-summary">{n.summary}</span>
-            </span>
-            <span className="note-row-date">{n.date}</span>
-          </button>
-        ))}
+      <div className="note-grid">
+        {PUBLISHED_NOTES.map((n) => {
+          const thumb = stillFor(n.photos?.[0]);
+          return (
+            <button
+              key={n.id}
+              className="note-tile"
+              onClick={() => onOpenNote?.(n.id)}
+              title={n.summary}
+            >
+              <span className="note-tile-thumb">
+                {thumb ? (
+                  <img src={thumb} alt="" loading="lazy" />
+                ) : (
+                  <span className="note-row-icon" aria-hidden="true">▤</span>
+                )}
+              </span>
+              <span className="note-tile-title">{n.title}</span>
+              <span className="note-tile-date">{n.date}</span>
+            </button>
+          );
+        })}
       </div>
     )}
   </div>

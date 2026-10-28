@@ -27,6 +27,8 @@
   padding: 0 var(--sp-1) 0 var(--sp-2);
   margin-bottom: 3px;
   box-sizing: border-box;
+  /* Dragging the title bar on a phone moves the window, not the page */
+  touch-action: none;
 }
 
 .window-container.inactive .banner {
@@ -96,4 +98,21 @@
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
+}
+
+/* Fingers need bigger targets than the 20px Win95 buttons */
+@media (pointer: coarse) {
+  .banner {
+    height: 34px;
+  }
+
+  .window-controls {
+    gap: 4px;
+  }
+
+  .window-controls button {
+    min-width: 30px;
+    height: 28px;
+    font-size: var(--fs-sm);
+  }
 }

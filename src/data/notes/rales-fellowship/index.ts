@@ -13,7 +13,7 @@ const note: Note = {
   draft: false,
   captions: {
     'rales-finalists.jpg':
-      'Rales finalists at the selection weekend, March 2025.',
+      'Rales Fellowship finalists on a staircase during the selection weekend, March 2025.',
   },
   sections: [
     // Unwritten sections — uncomment once the prose replaces the prompts.

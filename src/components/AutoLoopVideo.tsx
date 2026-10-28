@@ -4,6 +4,8 @@ type AutoLoopVideoProps = {
   src: string;
   poster?: string;
   className?: string;
+  /** Accessible description, read by screen readers */
+  label?: string;
 };
 
 /* Autoplaying, looping, muted video.
@@ -17,7 +19,7 @@ type AutoLoopVideoProps = {
    play() still returns a rejected promise in some cases (low power
    mode, a user setting), so it is caught and the controls remain
    as the fallback. */
-const AutoLoopVideo = ({ src, poster, className }: AutoLoopVideoProps) => {
+const AutoLoopVideo = ({ src, poster, className, label }: AutoLoopVideoProps) => {
   const ref = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -42,6 +44,7 @@ const AutoLoopVideo = ({ src, poster, className }: AutoLoopVideoProps) => {
       className={className}
       src={src}
       poster={poster}
+      aria-label={label}
       controls
       autoPlay
       loop

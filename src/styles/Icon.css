@@ -52,3 +52,17 @@
   text-align: center;
   word-break: break-word;
 }
+
+/* Short screens: wrap into a second column instead of running
+   off the bottom of the desktop */
+@media (max-width: 600px), (max-height: 760px) {
+  .desktop-icons {
+    flex-wrap: wrap;
+    max-height: calc(100% - 40px);
+    column-gap: var(--sp-1);
+  }
+
+  .desktop-icon {
+    width: 76px;
+  }
+}

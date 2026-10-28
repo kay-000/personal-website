@@ -34,7 +34,6 @@ const Pictures = ({ onOpenOwner }: PicturesProps) => {
               key={photo.src}
               className="thumb"
               onClick={() => setIndex(i)}
-              title={photo.caption}
             >
               <span className="thumb-frame">
                 {isVideo(photo) ? (
@@ -46,7 +45,6 @@ const Pictures = ({ onOpenOwner }: PicturesProps) => {
                   <img src={photo.src} alt={photo.alt ?? photo.caption} />
                 )}
               </span>
-              <span className="thumb-caption">{photo.caption}</span>
               <span className="thumb-source">{photo.owner.title}</span>
             </button>
           ))}

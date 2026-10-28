@@ -46,6 +46,8 @@ export type Note = {
   photos?: Photo[];
   /** Files listed at the bottom of the note, opened in their own window */
   attachments?: Attachment[];
+  /** YouTube video id, embedded under the photos */
+  youtube?: string;
 };
 
 export type Attachment = {

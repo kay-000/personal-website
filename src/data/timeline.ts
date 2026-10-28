@@ -45,6 +45,8 @@ export type TimelineEntry = {
   type: EntryType;
   /** Renders a "NOW" badge */
   present?: boolean;
+  /** Pinned as a card at the top of the timeline */
+  highlight?: boolean;
   link?: TimelineLink;
 };
 
@@ -65,11 +67,41 @@ const project = (id: string): TimelineLink => ({ kind: 'project', id });
 export const ENTRIES: TimelineEntry[] = [
   // ---------------------------------------------------------- 2026
   {
+    id: 'iros-2026',
+    highlight: true,
+    year: 2026,
+    date: 'Oct',
+    title: '2nd Place, IEEE RAS Standards Video Prize — IROS 2026',
+    detail: '$4,000 travel award for ICRA 2027 in Seoul',
+    type: 'award',
+    link: { kind: 'note', id: 'iros-2026' },
+  },
+  {
+    id: 'iros-volunteer-2026',
+    year: 2026,
+    date: 'Sep–Oct',
+    title: 'IROS 2026 — Student Volunteer',
+    detail: 'Pittsburgh, PA',
+    type: 'service',
+    link: { kind: 'note', id: 'iros-2026' },
+  },
+  {
+    id: 'roscon-2026',
+    highlight: true,
+    year: 2026,
+    date: 'Sep',
+    title: 'ROSCon Global 2026 Scholarship',
+    detail: 'Fully funded, Toronto',
+    type: 'award',
+    link: { kind: 'note', id: 'roscon-2026' },
+  },
+  {
     id: 'fzi-kit-2026',
+    highlight: true,
     year: 2026,
     date: 'Aug 3–7',
-    title: 'Summer School: Towards Walking Robots in Domestic Environments',
-    detail: 'FZI Research Center for Information Technology, with KIT — Karlsruhe, Germany',
+    title: 'RimA Summer School: Towards Walking Robots in Domestic Environments',
+    detail: 'Selected from 450 applicants. FZI and KIT, Karlsruhe, Germany',
     type: 'training',
     link: { kind: 'note', id: 'fzi-kit-2026' },
   },
@@ -84,14 +116,21 @@ export const ENTRIES: TimelineEntry[] = [
     link: project('safe'),
   },
   {
-    id: 'adversarial-2026',
+    id: 'mwrw-2026',
     year: 2026,
-    date: 'Present',
-    title: 'Graduate Research Assistant — AirLab',
-    detail: 'Adversarial AI Project',
+    date: 'Jun',
+    title: 'Poster — Midwest Robotics Workshop',
+    detail: 'SAFE benchmark, Toyota Technological Institute at Chicago',
     type: 'research',
-    present: true,
-    link: project('adversarial'),
+    link: project('safe'),
+  },
+  {
+    id: 'nsbe-2026',
+    year: 2026,
+    date: 'Mar',
+    title: 'NSBE Annual Convention — Volunteer',
+    detail: 'Represented the Rales Fellowship, Baltimore',
+    type: 'service',
   },
   {
     id: 'sii-2026',
@@ -103,6 +142,7 @@ export const ENTRIES: TimelineEntry[] = [
   },
   {
     id: 'jensen-2026',
+    highlight: true,
     year: 2026,
     date: 'May 10',
     title: 'Welcomed Jensen Huang to CMU',
@@ -110,13 +150,14 @@ export const ENTRIES: TimelineEntry[] = [
     type: 'service',
     link: { kind: 'note', id: 'jensen-2026' },
   },
-  // TODO(kayla): confirm the real date. Shows '—' until then.
   {
     id: 'mpowerhouse-2026',
     year: 2026,
-    date: '—',
-    title: 'MPowerhouse — Teaching robotics to kids',
+    date: 'May–Present',
+    title: 'Chief Innovation Officer — M-PowerHouse AquaMind 2035',
+    detail: 'Teaching robotics, drones and AI to high schoolers',
     type: 'service',
+    present: true,
     // Note is a draft until it's written up — unlink until then.
     // link: { kind: 'note', id: 'mpowerhouse' },
   },
@@ -139,6 +180,14 @@ export const ENTRIES: TimelineEntry[] = [
     detail: 'Wireless Innovation Hackathon for Accessibility',
     type: 'project',
     link: project('nightingale'),
+  },
+  {
+    id: 'iros-2025-workshop',
+    year: 2025,
+    date: 'Oct',
+    title: 'Workshop Paper — IROS 2025',
+    detail: '"Don\'t Fool Me Twice: Adapting to Failures in the Wild with Multi-Modal Reasoning"',
+    type: 'research',
   },
   {
     id: 'rales-inauguration',
@@ -168,10 +217,11 @@ export const ENTRIES: TimelineEntry[] = [
   },
   {
     id: 'rales-fellowship',
+    highlight: true,
     year: 2025,
     date: 'Aug',
     title: 'Rales Fellowship',
-    detail: 'Aug 2025 – Aug 2027',
+    detail: 'Full tuition, one of 34 from 400+ applicants. Aug 2025 – Aug 2027',
     type: 'award',
     link: { kind: 'note', id: 'rales-fellowship' },
   },
@@ -189,6 +239,7 @@ export const ENTRIES: TimelineEntry[] = [
     year: 2025,
     date: 'Jun',
     title: 'ETH Zurich Robotics Summer School',
+    detail: 'One of 50 selected from 292 applicants',
     type: 'training',
     // Note is a draft until it's written up — unlink until then.
     // link: { kind: 'note', id: 'eth-rss-2025' },
@@ -228,6 +279,32 @@ export const ENTRIES: TimelineEntry[] = [
     // link: { kind: 'note', id: 'swe-outreach' },
   },
   {
+    id: 'mindfulnest',
+    year: 2024,
+    date: 'Nov',
+    title: 'Undergraduate Research Observer — CMU CREATE Lab',
+    detail: 'MindfulNest, a socially assistive robot',
+    type: 'research',
+  },
+  {
+    id: 'msk-hackathon',
+    year: 2024,
+    date: 'Aug',
+    title: '1st Place, MSK Intern Hackathon',
+    detail: 'MSK SkinMonitor, an AI-powered health tracking app',
+    type: 'award',
+    link: project('msk'),
+  },
+  {
+    id: 'mom-2024',
+    year: 2024,
+    date: 'May',
+    title: 'Poster — Meeting of the Minds Research Symposium',
+    detail: 'FIReVision, Carnegie Mellon',
+    type: 'research',
+    link: project('firevision'),
+  },
+  {
     id: 'msk',
     year: 2024,
     date: 'Jun–Aug',
@@ -265,16 +342,18 @@ export const ENTRIES: TimelineEntry[] = [
     type: 'research',
     link: project('hri'),
   },
-  {
-    id: 'inverse-rendering',
-    year: 2023,
-    date: 'Sep–Dec',
-    title: 'AirLab Wildfire Project — Inverse Rendering',
-    type: 'research',
-    link: project('inverse-rendering'),
-  },
+  // Hidden with the Inverse Rendering project
+  // {
+  //   id: 'inverse-rendering',
+  //   year: 2023,
+  //   date: 'Sep–Dec',
+  //   title: 'AirLab Wildfire Project — Inverse Rendering',
+  //   type: 'research',
+  //   link: project('inverse-rendering'),
+  // },
   {
     id: 'firevision',
+    highlight: true,
     year: 2023,
     date: 'May–Sep',
     title: 'AirLab Wildfire Project — FIReVision',
@@ -298,6 +377,15 @@ export const ENTRIES: TimelineEntry[] = [
     detail: 'via HURAY',
     type: 'research',
     link: project('research'),
+  },
+
+  {
+    id: 'marshall-scholarship',
+    year: 2023,
+    date: 'Aug',
+    title: 'Frank J. Marshall Undergraduate Scholarship',
+    detail: 'Aug 2023 – May 2025',
+    type: 'award',
   },
 
   // ---------------------------------------------------------- 2022
